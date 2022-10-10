@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import InstitutionCard from './InstitutionCard';
 
 export default function InstitutionList() {
     const [institutions, setInstitutions] = useState(null);
@@ -20,11 +21,7 @@ export default function InstitutionList() {
 
     function loaded() {
         const allInstitutions = institutions.map((institution) => {
-            return (
-                <div className="institution" key={institution.ins_id}>
-                    <h2>{institution.name}</h2>
-                </div>
-            );
+            return <InstitutionCard institution={institution} key={institution.ins_id} />;
         });
 
         return allInstitutions;
