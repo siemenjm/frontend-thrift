@@ -31,7 +31,7 @@ export default function InstitutionList() {
     }
 
     return (
-        <div className="institution-list">
+        <div className="list institution-list">
             {institutions ? loaded() : <h2>Loading Institution list...</h2>}
         </div>
     );
