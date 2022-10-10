@@ -10,6 +10,10 @@
     display: flex;
 }
 
+.sidebar {
+    border: 1px solid black;
+}
+
 .main {
     flex-grow: 1;
     display: flex;
