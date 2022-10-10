@@ -21,7 +21,7 @@ export default function InstitutionList() {
     function loaded() {
         const allInstitutions = institutions.map((institution) => {
             return (
-                <div className="institution">
+                <div className="institution" key={institution.ins_id}>
                     <h2>{institution.name}</h2>
                 </div>
             );
