@@ -14,11 +14,29 @@
     border: 1px solid black;
 }
 
-.main {
+main {
     flex-grow: 1;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+}
+
+.page-header {
+    grid-area: 1 / 1 / span 1 / span 1;
 }
 
 .list {
-    flex-grow: 1;
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid blue;
+}
+
+.details {
+    grid-area: 1 / 2 / span 2 / span 1;
+    border: 1px solid green;
 }

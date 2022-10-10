@@ -4,10 +4,10 @@ import InstitutionPage from '../pages/InstitutionPage';
 
 export default function Main() {
     return (
-        <div className="main">
+        <main>
             <Routes>
                 <Route path='/institutions' element={<InstitutionPage />} />
             </Routes>
-        </div>
+        </main>
     );
 }
