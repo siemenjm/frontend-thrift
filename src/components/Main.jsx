@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AccountPage from '../pages/AccountPage';
 import InstitutionPage from '../pages/InstitutionPage';
+import TransactionPage from '../pages/TransactionPage';
 
 export default function Main() {
     return (
@@ -9,6 +10,7 @@ export default function Main() {
             <Routes>
                 <Route path='/institutions' element={<InstitutionPage />} />
                 <Route path='/accounts' element={<AccountPage />} />
+                <Route path='/transactions' element={<TransactionPage />} />
             </Routes>
         </main>
     );
