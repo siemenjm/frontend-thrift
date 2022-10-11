@@ -1,37 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import InstitutionCard from './InstitutionCard';
 
-export default function InstitutionList() {
-    const [institutions, setInstitutions] = useState(null);
-
-    async function getInstitutions() {
-        try {
-            const response = await fetch('http://localhost:4000/institutions');
-            const data = await response.json();
-
-            setInstitutions(data);
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-
-    useEffect(() => {
-        getInstitutions();
-    }, []);
-
+export default function InstitutionList({ institutions }) {
     function loaded() {
         const allInstitutions = institutions.map((institution) => {
-            return (
-                <div className="institution" key={institution.ins_id}>
-                    <h2>{institution.name}</h2>
-                </div>
-            );
+            return <InstitutionCard institution={institution} key={institution.ins_id} />;
         });
 
         return allInstitutions;
     }
 
     return (
-        <div className="institution-list">
+        <div className="list institution-list">
             {institutions ? loaded() : <h2>Loading Institution list...</h2>}
         </div>
     );
