@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import InstitutionCard from './InstitutionCard';
 
 export default function InstitutionList({ institutions }) {
@@ -10,8 +11,13 @@ export default function InstitutionList({ institutions }) {
     }
 
     return (
-        <div className="list institution-list">
-            {institutions ? loaded() : <h2>Loading Institution list...</h2>}
-        </div>
+        <>
+            <div className="list institution-list">
+                {institutions ? loaded() : <h2>Loading Institution list...</h2>}
+            </div>
+            <Link to='/institutions/new'>
+                <p className="create-link">Add New Institution</p>
+            </Link>
+        </>
     );
 }

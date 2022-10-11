@@ -8,9 +8,11 @@ export default function Main() {
     return (
         <main>
             <Routes>
-                <Route path='/institutions' element={<InstitutionPage />} />
-                <Route path='/accounts' element={<AccountPage />} />
-                <Route path='/transactions' element={<TransactionPage />} />
+                <Route path='/institutions/' element={<InstitutionPage />} >
+                    {/* <Route path='new' element={InstitutionCreate} /> */}
+                </Route>
+                <Route path='/accounts/' element={<AccountPage />} />
+                <Route path='/transactions/' element={<TransactionPage />} />
             </Routes>
         </main>
     );
