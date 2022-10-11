@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import TransactionCard from './TransactionCard';
 
 export default function TransactionList({ transactions }) {
