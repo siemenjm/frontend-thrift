@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function PageHeader({ page }) {
+export default function PageHeader({ page, institutions }) {
+    function loadInstitutionCount() {
+        return institutions.length;
+    }
+
     return (
         <div className="page-header">
             <h2 className="page-title">{`${page}s`}</h2>
@@ -13,7 +17,7 @@ export default function PageHeader({ page }) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>XX</td>
+                        <td>{institutions ? loadInstitutionCount() : <h2>Loading...</h2>}</td>
                         <td>$XX,XXX.XX</td>
                     </tr>
                 </tbody>
