@@ -10,7 +10,7 @@ export default function AccountList({ accounts }) {
     }
 
     return (
-        <div className="account-list">
+        <div className="list account-list">
             {accounts ? loaded() : <h2>Loading Account list...</h2>}
         </div>
     );
