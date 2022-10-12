@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import AccountDropdown from './AccountDropdown';
+import TransactionTypeDropdown from './TransactionTypeDropdown';
 
 export default function TransactionCreateForm({ getTransactions, setFormVisibility }) {
     const initialFormState = {
@@ -15,6 +16,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
     }
     const [formState, setFormState] = useState(initialFormState);
     const [accounts, setAccounts] = useState(null);
+    const [transTypeDropdownValue, setTransTypeDropdownValue] = useState('Expense');
     const [creditedDropdownValue, setCreditedDropdownValue] = useState(null);
     const [debitedDropdownValue, setDebitedDropdownValue] = useState(null);
 
@@ -99,7 +101,8 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                     placeholder='Enter transaction amount...'
                     required
                 />
-                <label htmlFor="transType">Transaction Type:</label>
+                <TransactionTypeDropdown dropdownValue={transTypeDropdownValue} setDropdownValue={setTransTypeDropdownValue} />
+                {/* <label htmlFor="transType">Transaction Type:</label>
                 <input
                     type="text"
                     name='transType'
@@ -107,7 +110,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                     value={formState.transType}
                     placeholder='Enter transaction type...'
                     required
-                />
+                /> */}
                 <label htmlFor="category">Transaction Category:</label>
                 <input
                     type="text"
