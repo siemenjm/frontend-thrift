@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AccountTypeDropdown from './AccountTypeDropdown';
+import InstitutionDropdown from './InstitutionDropdown';
 
 export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     const initialFormState = {
@@ -10,10 +11,16 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
         userId: ''
     }
     const [formState, setFormState] = useState(initialFormState);
+    const [institutions, setIntitutions] = useState(null);
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState('Depository');
+    const [institutionDropdownValue, setInstitutionDropdownValue] = useState('null');
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
+    }
+
+    function handleClick() {
+        setFormState({...formState, ['accountType']: accountTypeDropdownValue, ['insId']: institutionDropdownValue });
     }
 
     function handleSubmit(e) {
@@ -33,6 +40,8 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                 },
                 body: JSON.stringify(data),
             };
+
+            console.log(options.body)
             const newAccount = await fetch('http://localhost:4000/accounts', options);
 
             getAccounts();
@@ -43,6 +52,21 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
             console.error(error.message);
         }
     }
+
+    async function getInstitutions() {
+        try {
+            const response = await fetch('http://localhost:4000/institutions');
+            const data = await response.json();
+
+            setIntitutions(data);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getInstitutions();
+    }, []);
 
     return (
         <>
@@ -66,7 +90,9 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                     required
                 />
                 <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
-                <label htmlFor="insId">Institution ID:</label>
+                <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
+
+                {/* <label htmlFor="insId">Institution ID:</label>
                 <input
                     type="number"
                     name='insId'
@@ -74,7 +100,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                     value={formState.insId}
                     placeholder='Enter institution ID...'
                     required
-                />
+                /> */}
                 {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
                 <label htmlFor="userId">User ID:</label>
                 <input
@@ -85,7 +111,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                     placeholder='Enter user ID...'
                     required
                 />
-                <button type="submit">Add New Account</button>
+                <button type="submit" onClick={handleClick}>Add New Account</button>
             </form>
         </>
     );
