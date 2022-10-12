@@ -102,15 +102,6 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                     required
                 />
                 <TransactionTypeDropdown dropdownValue={transTypeDropdownValue} setDropdownValue={setTransTypeDropdownValue} />
-                {/* <label htmlFor="transType">Transaction Type:</label>
-                <input
-                    type="text"
-                    name='transType'
-                    onChange={handleChange}
-                    value={formState.transType}
-                    placeholder='Enter transaction type...'
-                    required
-                /> */}
                 <label htmlFor="category">Transaction Category:</label>
                 <input
                     type="text"
@@ -141,7 +132,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                     placeholder='Enter user ID...'
                     required
                 />
-                <button type="submit" onClick={handleClick}>Add New Account</button>
+                <button type="submit" onClick={handleClick}>Add New Transaction</button>
             </form>
         </>
     );
