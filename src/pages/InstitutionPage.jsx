@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router';
 import CreateBtn from '../components/CreateBtn';
 import InstitutionCreateForm from '../components/InstitutionCreateForm';
 import InstitutionDetails from '../components/InstitutionDetails';
@@ -28,7 +29,10 @@ export default function InstitutionPage() {
         <>
             <PageHeader page={'Institution'} institutions={institutions}/>
             <InstitutionList institutions={institutions}/>
-            {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Institution'} setFormVisibility={setFormVisibility} />}
+            <Routes>
+                
+            </Routes>
+            {/* {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Institution'} setFormVisibility={setFormVisibility} />} */}
             <InstitutionDetails />
         </>
     );
