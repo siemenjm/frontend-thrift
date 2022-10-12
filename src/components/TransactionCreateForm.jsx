@@ -16,13 +16,14 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
     const [formState, setFormState] = useState(initialFormState);
     const [accounts, setAccounts] = useState(null);
     const [creditedDropdownValue, setCreditedDropdownValue] = useState(null);
+    const [debitedDropdownValue, setDebitedDropdownValue] = useState(null);
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
 
     function handleClick() {
-        setFormState({...formState, ['creditedAccountId']: creditedDropdownValue});
+        setFormState({...formState, ['creditedAccountId']: creditedDropdownValue, ['debitedAccountId']: debitedDropdownValue });
     }
 
     function handleSubmit(e) {
@@ -124,23 +125,9 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                     value={formState.subCategory}
                     placeholder='Enter account sub-category...'
                 />
-                <AccountDropdown accounts={accounts} accountAction={'Credited'} creditedDropdownValue={creditedDropdownValue} setCreditedDropdownValue={setCreditedDropdownValue} />
-                {/* <label htmlFor="creditedAccountId">Credited Account ID:</label>
-                <input
-                    type="number"
-                    name='creditedAccountId'
-                    onChange={handleChange}
-                    value={formState.creditedAccountId}
-                    placeholder='Enter credited account ID...'
-                /> */}
-                <label htmlFor="debitedAccountId">Debited Account ID:</label>
-                <input
-                    type="number"
-                    name='debitedAccountId'
-                    onChange={handleChange}
-                    value={formState.debitedAccountId}
-                    placeholder='Enter debited account ID...'
-                />
+                <AccountDropdown accounts={accounts} accountAction={'Credited'} dropdownValue={creditedDropdownValue} setDropdownValue={setCreditedDropdownValue} />
+                <AccountDropdown accounts={accounts} accountAction={'Debited'} dropdownValue={debitedDropdownValue} setDropdownValue={setDebitedDropdownValue} />
+                
                 {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
                 <label htmlFor="userId">User ID:</label>
                 <input

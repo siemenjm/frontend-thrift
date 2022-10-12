@@ -1,14 +1,14 @@
-export default function AccountDropdown({ accounts, accountAction, creditedDropdownValue, setCreditedDropdownValue }) {
+export default function AccountDropdown({ accounts, accountAction, dropdownValue, setDropdownValue }) {
 
     function handleChange(e) {
-        setCreditedDropdownValue(e.target.value || null);
+        setDropdownValue(e.target.value || null);
     }
 
     function loaded() {
         return(
             <>
                 <label htmlFor={`${accountAction.toLowerCase()}AccountId`}>{accountAction} Account ID:</label>
-                <select value={creditedDropdownValue || ''} onChange={handleChange} >
+                <select value={dropdownValue || ''} onChange={handleChange} >
                     <option value={''}>None</option>
                     {accounts.map((account) => {
                         return <option value={account.account_id} key={account.account_id}>{account.name}</option>
