@@ -26,7 +26,7 @@ export default function InstitutionPage() {
         <>
             <PageHeader page={'Institution'} institutions={institutions}/>
             <InstitutionList institutions={institutions}/>
-            <InstitutionCreateForm />
+            <InstitutionCreateForm getInstitutions={getInstitutions} />
             <InstitutionDetails />
         </>
     );

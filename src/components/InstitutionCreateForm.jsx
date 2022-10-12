@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CreateBtn from './CreateBtn';
 
-export default function InstitutionCreateForm() {
+export default function InstitutionCreateForm({ getInstitutions }) {
     const initialFormState = {
         name: '',
         logo: '',
@@ -17,8 +17,8 @@ export default function InstitutionCreateForm() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        console.log(formState);
         createInstitution(formState);
+        getInstitutions();
 
         setFormState(initialFormState);
     }
