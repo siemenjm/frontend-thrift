@@ -41,7 +41,6 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                 body: JSON.stringify(data),
             };
 
-            console.log(options.body)
             const newAccount = await fetch('http://localhost:4000/accounts', options);
 
             getAccounts();
