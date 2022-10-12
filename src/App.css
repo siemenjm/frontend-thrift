@@ -53,3 +53,14 @@ main {
     grid-area: 1 / 2 / span 3 / span 1;
     border: 1px solid green;
 }
+
+form {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+form > label, form > button {
+    margin-top: 10px;
+}
