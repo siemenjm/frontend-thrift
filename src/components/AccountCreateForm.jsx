@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-export default function InstitutionCreateForm({ getAccounts, setFormVisibility }) {
+export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     const initialFormState = {
         name: '',
-        startingBalance: null,
+        startingBalance: '',
         accountType: '',
         insId: '',
         userId: ''
