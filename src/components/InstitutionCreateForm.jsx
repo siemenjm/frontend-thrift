@@ -19,7 +19,6 @@ export default function InstitutionCreateForm({ getInstitutions, setFormVisibili
         createInstitution(formState);
 
         setFormState(initialFormState);
-        setFormVisibility(false);
     }
 
     async function createInstitution(data) {
@@ -32,6 +31,10 @@ export default function InstitutionCreateForm({ getInstitutions, setFormVisibili
                 body: JSON.stringify(data),
             };
             const newInstitution = await fetch('http://localhost:4000/institutions', options);
+
+            getInstitutions();
+
+            setFormVisibility(false);
 
         } catch (error) {
             console.error(error.message);

@@ -22,7 +22,7 @@ export default function InstitutionPage() {
 
     useEffect(() => {
         getInstitutions();
-    }, [formVisibility]);
+    }, []);
 
     return (
         <>
