@@ -15,9 +15,6 @@ export default function InstitutionList({ institutions }) {
             <div className="list institution-list">
                 {institutions ? loaded() : <h2>Loading Institution list...</h2>}
             </div>
-            <Link to='/institutions/new'>
-                <p className="create-link">Add New Institution</p>
-            </Link>
         </>
     );
 }

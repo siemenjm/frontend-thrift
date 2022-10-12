@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import InstitutionCreateForm from '../components/InstitutionCreateForm';
 import InstitutionDetails from '../components/InstitutionDetails';
 import InstitutionList from '../components/InstitutionList';
 import PageHeader from '../components/PageHeader';
@@ -25,6 +26,7 @@ export default function InstitutionPage() {
         <>
             <PageHeader page={'Institution'} institutions={institutions}/>
             <InstitutionList institutions={institutions}/>
+            <InstitutionCreateForm />
             <InstitutionDetails />
         </>
     );
