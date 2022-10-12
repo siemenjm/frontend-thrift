@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import CreateBtn from '../components/CreateBtn';
+import TransactionCreateForm from '../components/TransactionCreateForm';
 import TransactionDetails from '../components/TransactionDetails';
 import TransactionList from '../components/TransactionList';
 import PageHeader from '../components/PageHeader';
 
 export default function TransactionPage() {
     const [transactions, setTransactions] = useState(null);
+    const [formVisibility, setFormVisibility] = useState(false);
 
     async function getTransactions() {
         try {
@@ -25,6 +28,7 @@ export default function TransactionPage() {
         <>
             <PageHeader page={'Transaction'} transactions={transactions}/>
             <TransactionList transactions={transactions}/>
+            {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}
             <TransactionDetails />
         </>
     );
