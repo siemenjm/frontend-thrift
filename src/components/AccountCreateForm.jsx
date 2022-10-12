@@ -92,15 +92,6 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                 <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
                 <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
 
-                {/* <label htmlFor="insId">Institution ID:</label>
-                <input
-                    type="number"
-                    name='insId'
-                    onChange={handleChange}
-                    value={formState.insId}
-                    placeholder='Enter institution ID...'
-                    required
-                /> */}
                 {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
                 <label htmlFor="userId">User ID:</label>
                 <input
