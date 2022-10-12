@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AccountTypeDropdown from './AccountTypeDropdown';
 
 export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     const initialFormState = {
@@ -9,6 +10,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
         userId: ''
     }
     const [formState, setFormState] = useState(initialFormState);
+    const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState('Depository');
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
@@ -63,15 +65,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                     placeholder='Enter account starting balance...'
                     required
                 />
-                <label htmlFor="accountType">Account type:</label>
-                <input
-                    type="text"
-                    name='accountType'
-                    onChange={handleChange}
-                    value={formState.accountType}
-                    placeholder='Enter account type...'
-                    required
-                />
+                <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
                 <label htmlFor="insId">Institution ID:</label>
                 <input
                     type="number"
