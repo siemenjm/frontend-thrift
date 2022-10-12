@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import CreateBtn from './CreateBtn';
 
-export default function InstitutionCreateForm({ getInstitutions }) {
+export default function InstitutionCreateForm({ getInstitutions, setFormVisibility }) {
     const initialFormState = {
         name: '',
         logo: '',
@@ -18,9 +17,9 @@ export default function InstitutionCreateForm({ getInstitutions }) {
         e.preventDefault();
 
         createInstitution(formState);
-        getInstitutions();
 
         setFormState(initialFormState);
+        setFormVisibility(false);
     }
 
     async function createInstitution(data) {
@@ -41,7 +40,6 @@ export default function InstitutionCreateForm({ getInstitutions }) {
 
     return (
         <>
-            <CreateBtn page={'Institution'} />
             <form onSubmit={handleSubmit} className='create-form institution-create-form'>
                 <label htmlFor="name">Bank or Institution Name:</label>
                 <input

@@ -1,9 +1,13 @@
 import React from 'react';
 
-export default function CreateBtn({ page }) {
+export default function CreateBtn({ page, setFormVisibility }) {
+    function handleClick() {
+        setFormVisibility(true);
+    }
+    
     return (
         <div className="create-btn-container">
-                <button className='create-btn'>Add New {page}</button>
+                <button onClick={handleClick} className='create-btn'>Add New {page}</button>
         </div>
     );
 }
