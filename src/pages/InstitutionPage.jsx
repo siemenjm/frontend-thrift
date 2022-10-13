@@ -7,7 +7,10 @@ import PageHeader from '../components/PageHeader';
 
 export default function InstitutionPage() {
     const [institutions, setInstitutions] = useState(null);
+    const [currentInstitution, setCurrentInstitution] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
+
+    console.log(currentInstitution);
 
     async function getInstitutions() {
         try {
@@ -27,9 +30,9 @@ export default function InstitutionPage() {
     return (
         <>
             <PageHeader page={'Institution'} institutions={institutions}/>
-            <InstitutionList institutions={institutions}/>
+            <InstitutionList institutions={institutions} setCurrentInstitution={setCurrentInstitution} />
             {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Institution'} setFormVisibility={setFormVisibility} />}
-            <InstitutionDetails />
+            {currentInstitution ? <InstitutionDetails institution={currentInstitution} /> : <></>}
         </>
     );
 }

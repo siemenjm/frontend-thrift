@@ -1,9 +1,11 @@
 import InstitutionCard from './InstitutionCard';
 
-export default function InstitutionList({ institutions }) {
+export default function InstitutionList({ institutions, setCurrentInstitution }) {
     function loaded() {
         const allInstitutions = institutions.map((institution) => {
-            return <InstitutionCard institution={institution} key={institution.ins_id} />;
+            return (
+                <InstitutionCard institution={institution} setCurrentInstitution={setCurrentInstitution} key={institution.ins_id} />
+            );
         });
 
         return allInstitutions;
