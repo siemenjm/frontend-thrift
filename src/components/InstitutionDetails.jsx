@@ -1,7 +1,10 @@
 import React from 'react';
+import InstitutionDetailsHeader from './InstitutionDetailsHeader';
 
-export default function InstitutionDetails() {
+export default function InstitutionDetails({ institution }) {
     return (
-        <div className='details institution-details'>InstitutionDetails</div>
+        <div className='details institution-details'>
+            <InstitutionDetailsHeader />
+        </div>
     );
 }
