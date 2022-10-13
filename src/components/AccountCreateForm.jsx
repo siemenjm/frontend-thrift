@@ -26,7 +26,6 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     function handleSubmit(e) {
         e.preventDefault();
 
-        console.log(formState);
         createAccount(formState);
 
         setFormState(initialFormState);
