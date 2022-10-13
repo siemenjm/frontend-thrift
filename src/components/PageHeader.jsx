@@ -4,7 +4,9 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     function sumBalances(resource) {
         let sum = 0;
         for (let i = 0; i < resource.length; i++) {
-            sum += parseFloat(resource[i].current_balance);
+            if (resource[i].current_balance) {
+                sum += parseFloat(resource[i].current_balance);
+            }
         }
 
         return sum.toFixed(2);
