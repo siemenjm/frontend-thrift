@@ -26,6 +26,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     function handleSubmit(e) {
         e.preventDefault();
 
+        console.log(formState);
         createAccount(formState);
 
         setFormState(initialFormState);
@@ -57,7 +58,9 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
             const response = await fetch('http://localhost:4000/institutions');
             const data = await response.json();
 
+
             setIntitutions(data);
+            setInstitutionDropdownValue(data[0].ins_id);
         } catch (error) {
             console.error(error.message);
         }
