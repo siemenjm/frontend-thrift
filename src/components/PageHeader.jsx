@@ -14,7 +14,7 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     
     if (institutions) {
         return (
-            <div className="page-header">
+            <div className="header page-header">
                 <h2 className="page-title">{`${page}s`}</h2>
                 <table>
                     <thead>
