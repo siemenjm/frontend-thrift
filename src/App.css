@@ -22,6 +22,7 @@ body {
 }
 
 main {
+    height: 100%;
     flex-grow: 1;
     display: grid;
     grid-template-columns: 1fr auto;
@@ -36,10 +37,6 @@ main {
     grid-area: 2 / 1 / span 1 / span 1;
 }
 
-.create-link {
-    grid-area: 3 / 1 / span 1 / span 1;
-}
-
 .card {
     display: flex;
     justify-content: space-around;
@@ -47,7 +44,23 @@ main {
     border: 1px solid blue;
 }
 
+.create-btn-container {
+    grid-area: 3 / 1 / span 1 / span 1;
+    text-align: center;
+}
+
 .details {
     grid-area: 1 / 2 / span 3 / span 1;
     border: 1px solid green;
+}
+
+form {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+form > label, form > button {
+    margin-top: 10px;
 }

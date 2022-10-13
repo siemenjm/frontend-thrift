@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import AccountCreateForm from '../components/AccountCreateForm';
 import AccountDetails from '../components/AccountDetails';
 import AccountList from '../components/AccountList';
+import CreateBtn from '../components/CreateBtn';
 import PageHeader from '../components/PageHeader';
 
 export default function AccountPage() {
     const [accounts, setAccounts] = useState(null);
+    const [formVisibility, setFormVisibility] = useState(false);
 
     async function getAccounts() {
         try {
@@ -25,6 +28,7 @@ export default function AccountPage() {
         <>
             <PageHeader page={'Account'} accounts={accounts}/>
             <AccountList accounts={accounts}/>
+            {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
             <AccountDetails />
         </>
     );

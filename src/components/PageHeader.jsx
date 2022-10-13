@@ -1,18 +1,15 @@
 import React from 'react';
 
 export default function PageHeader({ page, institutions, accounts, transactions }) {
-    function loadInstitutionCount() {
-        return institutions.length;
-    }
+    function sumBalances(resource) {
+        let sum = 0;
+        for (let i = 0; i < resource.length; i++) {
+            sum += parseFloat(resource[i].current_balance);
+        }
 
-    function loadAccountCount() {
-        return accounts.length;
+        return sum.toFixed(2);
     }
-
-    function loadTransactionCount() {
-        return transactions.length;
-    }
-
+    
     if (institutions) {
         return (
             <div className="page-header">
@@ -26,8 +23,8 @@ export default function PageHeader({ page, institutions, accounts, transactions 
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{institutions ? loadInstitutionCount() : <h2>Loading...</h2>}</td>
-                            <td>$XX,XXX.XX</td>
+                            <td>{institutions ? institutions.length : <h2>Loading...</h2>}</td>
+                            <td>${sumBalances(institutions)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -48,8 +45,8 @@ export default function PageHeader({ page, institutions, accounts, transactions 
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{accounts ? loadAccountCount() : <h2>Loading...</h2>}</td>
-                            <td>$XX,XXX.XX</td>
+                            <td>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
+                            <td>${sumBalances(accounts)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -69,7 +66,7 @@ export default function PageHeader({ page, institutions, accounts, transactions 
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{transactions ? loadTransactionCount() : <h2>Loading...</h2>}</td>
+                            <td>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
                         </tr>
                     </tbody>
                 </table>

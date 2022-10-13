@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import CreateBtn from '../components/CreateBtn';
+import InstitutionCreateForm from '../components/InstitutionCreateForm';
 import InstitutionDetails from '../components/InstitutionDetails';
 import InstitutionList from '../components/InstitutionList';
 import PageHeader from '../components/PageHeader';
 
 export default function InstitutionPage() {
     const [institutions, setInstitutions] = useState(null);
+    const [formVisibility, setFormVisibility] = useState(false);
 
     async function getInstitutions() {
         try {
@@ -25,6 +28,7 @@ export default function InstitutionPage() {
         <>
             <PageHeader page={'Institution'} institutions={institutions}/>
             <InstitutionList institutions={institutions}/>
+            {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Institution'} setFormVisibility={setFormVisibility} />}
             <InstitutionDetails />
         </>
     );
