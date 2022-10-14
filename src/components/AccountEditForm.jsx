@@ -8,8 +8,6 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState(account.account_type);
     const [institutionDropdownValue, setInstitutionDropdownValue] = useState(account.ins_id);
 
-    console.log(account);
-
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
