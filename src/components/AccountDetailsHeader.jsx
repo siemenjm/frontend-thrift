@@ -1,7 +1,18 @@
-import React from 'react';
-import { FaTrash } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import AccountEditForm from './AccountEditForm';
 
 export default function AccountDetailsHeader({ account, setCurrentAccount, getAccounts, transactions }) {
+    const [formVisibility, setFormVisibility] = useState(false);
+
+    function handleClick(e) {
+        if (formVisibility) {
+            setFormVisibility(false);
+        } else {
+            setFormVisibility(true);
+        }
+    }
+    
     async function handleSubmit(e) {
         e.preventDefault();
 
@@ -26,6 +37,9 @@ export default function AccountDetailsHeader({ account, setCurrentAccount, getAc
     return (
         <div className='header details-header account-details-header'>
             <h2 className="details-title">{`${account.name} Details`}</h2>
+            <button onClick={handleClick} className='edit-btn account-edit-btn'>
+                <FaEdit />
+            </button>
             <form onSubmit={handleSubmit} className='delete-form account-delete-form'>
                 <button type="submit">
                     <FaTrash />
@@ -45,6 +59,7 @@ export default function AccountDetailsHeader({ account, setCurrentAccount, getAc
                     </tr>
                 </tbody>
             </table>
+            {formVisibility ? <AccountEditForm account={account} setCurrentAccount={setCurrentAccount} setFormVisibility={setFormVisibility} getAccounts={getAccounts} /> : <></>}
         </div>
     );
 }
