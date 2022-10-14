@@ -5,7 +5,7 @@ import AccountList from './AccountList';
 import CreateBtn from './CreateBtn';
 import InstitutionDetailsHeader from './InstitutionDetailsHeader';
 
-export default function InstitutionDetails({ institution }) {
+export default function InstitutionDetails({ institution, setCurrentInstitution, getInstitutions }) {
     const [accounts, setAccounts] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
@@ -26,7 +26,7 @@ export default function InstitutionDetails({ institution }) {
 
     return (
         <div className="details institution-details">
-            <InstitutionDetailsHeader institution={institution} accounts={accounts}/>
+            <InstitutionDetailsHeader institution={institution} setCurrentInstitution={setCurrentInstitution} getInstitutions={getInstitutions} accounts={accounts} />
             <AccountList accounts={accounts} isDetail={true}/>
             {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
         </div>

@@ -1,9 +1,24 @@
-import React from 'react';
-import { FaTrash } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { FaEdit, FaTrash } from 'react-icons/fa';
+import InstitutionEditForm from './InstitutionEditForm';
 
-export default function InstitutionDetailsHeader({ institution, accounts }) {
-    function handleSubmit() {
-        deleteInstitution();
+export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, getInstitutions, accounts }) {
+    const [formVisibility, setFormVisibility] = useState(false);
+
+    function handleClick(e) {
+        if (formVisibility) {
+            setFormVisibility(false);
+        } else {
+            setFormVisibility(true);
+        }
+    }
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        await deleteInstitution();
+        setCurrentInstitution(null);
+        await getInstitutions();
     }
 
     async function deleteInstitution() {
@@ -33,6 +48,9 @@ export default function InstitutionDetailsHeader({ institution, accounts }) {
     return (
         <div className='header details-header institution-details-header'>
             <h2 className="details-title">{`${institution.name} Details`}</h2>
+            <button onClick={handleClick} className='edit-btn institution-edit-btn'>
+                <FaEdit />
+            </button>
             <form onSubmit={handleSubmit} className='delete-form institution-delete-form'>
                 <button type="submit">
                     <FaTrash />
@@ -52,6 +70,7 @@ export default function InstitutionDetailsHeader({ institution, accounts }) {
                     </tr>
                 </tbody>
             </table>
+            {formVisibility ? <InstitutionEditForm institution={institution} setCurrentInstitution={setCurrentInstitution} setFormVisibility={setFormVisibility} getInstitutions={getInstitutions} /> : <></>}
         </div>
     );
 }

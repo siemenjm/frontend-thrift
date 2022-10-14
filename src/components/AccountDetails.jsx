@@ -5,7 +5,7 @@ import CreateBtn from './CreateBtn';
 import TransactionCreateForm from './TransactionCreateForm';
 import TransactionList from './TransactionList';
 
-export default function AccountDetails({ account }) {
+export default function AccountDetails({ account, setCurrentAccount, getAccounts }) {
     const [transactions, setTransactions] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
@@ -26,7 +26,7 @@ export default function AccountDetails({ account }) {
 
     return (
         <div className="details account-details">
-            <AccountDetailsHeader account={account} transactions={transactions} />
+            <AccountDetailsHeader account={account} setCurrentAccount={setCurrentAccount} getAccounts={getAccounts} transactions={transactions} />
             <TransactionList transactions={transactions}/>
             {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}
         </div>
