@@ -1,9 +1,17 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-export default function AccountDetailsHeader({ account, transactions }) {
-    function handleSubmit() {
+export default function AccountDetailsHeader({ account, setCurrentAccount, accounts, setAccounts, transactions }) {
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        let prevAccounts = accounts;
+        const index = prevAccounts.indexOf(account);
+        prevAccounts.splice(index, 1);
+
         deleteAccount();
+        setCurrentAccount(null);
+        setAccounts(prevAccounts);
     }
 
     async function deleteAccount() {
