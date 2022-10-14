@@ -10,8 +10,6 @@ export default function TransactionPage() {
     const [currentTransaction, setCurrentTransaction] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
-    console.log(currentTransaction);
-
     async function getTransactions() {
         try {
             const response = await fetch('http://localhost:4000/transactions');
@@ -32,7 +30,7 @@ export default function TransactionPage() {
             <PageHeader page={'Transaction'} transactions={transactions}/>
             <TransactionList transactions={transactions} setCurrentTransaction={setCurrentTransaction} />
             {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}
-            <TransactionDetails />
+            {currentTransaction ? <TransactionDetails transaction={currentTransaction} /> : <></>}
         </>
     );
 }
