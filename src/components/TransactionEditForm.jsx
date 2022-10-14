@@ -9,6 +9,14 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
     const [creditedDropdownValue, setCreditedDropdownValue] = useState(transaction.credited_account_id);
     const [debitedDropdownValue, setDebitedDropdownValue] = useState(transaction.debited_account_id);
 
+    function formatDate(date) {
+        const tIndex = date.indexOf('T');
+        const formattedDate = date.slice(0, tIndex);
+
+        setFormState({...formState, ['date']: formattedDate});
+    }
+
+
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
@@ -56,6 +64,7 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
 
     useEffect(() => {
         getAccounts();
+        formatDate(transaction.date);
     }, []);
 
     return (
