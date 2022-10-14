@@ -25,7 +25,7 @@ export default function InstitutionDetailsHeader({ institution, accounts }) {
                 <tbody>
                     <tr>
                         <td>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
-                        <td>${sumBalances(accounts)}</td>
+                        <td>${accounts ? sumBalances(accounts) : <h2>Loading...</h2>}</td>
                     </tr>
                 </tbody>
             </table>
