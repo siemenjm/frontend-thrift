@@ -1,7 +1,11 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-export default function AccountCard({ account }) {
+export default function AccountCard({ account, setCurrentAccount }) {
+    function handleClick(e) {
+        setCurrentAccount(account);
+    }
+    
     function handleSubmit() {
         deleteAccount();
     }
@@ -20,7 +24,7 @@ export default function AccountCard({ account }) {
     }
 
     return (
-        <div className="card account-card">
+        <div onClick={handleClick} className="card account-card">
             <img src="" alt={`${account.ins_id} logo`} />
             <h2>{account.name} - {account.ins_id}</h2>
             <h2>${account.current_balance}</h2>
