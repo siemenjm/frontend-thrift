@@ -1,9 +1,11 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-export default function AccountCard({ account, setCurrentAccount }) {
+export default function AccountCard({ account, isDetail, setCurrentAccount}) {
     function handleClick(e) {
-        setCurrentAccount(account);
+        if (!isDetail) {
+            setCurrentAccount(account);
+        }
     }
     
     function handleSubmit() {
