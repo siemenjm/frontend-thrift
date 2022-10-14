@@ -13,7 +13,7 @@ export default function InstitutionDetailsHeader({ institution, accounts }) {
     }
     
     return (
-        <div className='header details-header'>
+        <div className='header details-header institution-details-header'>
             <h2 className="details-title">{`${institution.name} Details`}</h2>
             <table>
                 <thead>
