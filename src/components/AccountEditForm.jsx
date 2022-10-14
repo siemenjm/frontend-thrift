@@ -8,8 +8,6 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState('Depository');
     const [institutionDropdownValue, setInstitutionDropdownValue] = useState('null');
 
-    console.log(formState);
-
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
@@ -20,7 +18,6 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(formState);
 
         await editAccount(formState);
         setFormVisibility(false);
