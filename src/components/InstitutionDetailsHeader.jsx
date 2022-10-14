@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import InstitutionEditForm from './InstitutionEditForm';
 
 export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, institutions, setInstitutions, accounts }) {
-    function handleEditSubmit(e) {
-        editInstitution();
+    const [formVisibility, setFormVisibility] = useState(false);
+
+    function handleClick(e) {
+        if (formVisibility) {
+            setFormVisibility(false);
+        } else {
+            setFormVisibility(true);
+        }
     }
 
-    function handleDeleteSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         
         let prevInstitutions = institutions;
@@ -16,19 +23,6 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
         deleteInstitution();
         setCurrentInstitution(null);
         setInstitutions(prevInstitutions);
-    }
-
-    async function editInstitution() {
-        try {
-            const options = {
-                method: 'PUT'
-            };
-
-            const response = await fetch(`http://localhost:4000/institutions/${institution.ins_id}`, options);
-
-        } catch (error) {
-            console.error(error.message);
-        }
     }
 
     async function deleteInstitution() {
@@ -58,12 +52,10 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
     return (
         <div className='header details-header institution-details-header'>
             <h2 className="details-title">{`${institution.name} Details`}</h2>
-            <form onSubmit={handleEditSubmit} className='delete-form institution-delete-form'>
-                <button type="submit">
-                    <FaEdit />
-                </button>
-            </form>
-            <form onSubmit={handleDeleteSubmit} className='delete-form institution-delete-form'>
+            <button onClick={handleClick} className='edit-btn institution-edit-btn'>
+                <FaEdit />
+            </button>
+            <form onSubmit={handleSubmit} className='delete-form institution-delete-form'>
                 <button type="submit">
                     <FaTrash />
                 </button>
@@ -82,6 +74,7 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
                     </tr>
                 </tbody>
             </table>
+            {formVisibility ? <InstitutionEditForm institution={institution} setFormVisibility={setFormVisibility} /> : <></>}
         </div>
     );
 }
