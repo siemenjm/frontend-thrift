@@ -7,9 +7,13 @@ export default function TransactionDetailList({ transaction }) {
     transactionKeys.pop();
     console.log(transactionKeys) // pass these keys to TransactionDetail
 
+    const allDetails = transactionKeys.map((transKey) => {
+        return <TransactionDetail transKey={transKey} transaction={transaction} key={`${transaction.trans_id}-${transKey}`} />
+    });
+
     return (
         <div className='transaction-detail-list'>
-            <TransactionDetail />
+            {allDetails}
         </div>
     );
 }
