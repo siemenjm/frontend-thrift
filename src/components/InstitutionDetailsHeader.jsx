@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import InstitutionEditForm from './InstitutionEditForm';
 
-export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, institutions, setInstitutions, accounts }) {
+export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, institutions, setInstitutions, getInstitutions, accounts }) {
     const [formVisibility, setFormVisibility] = useState(false);
 
     function handleClick(e) {
@@ -74,7 +74,7 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
                     </tr>
                 </tbody>
             </table>
-            {formVisibility ? <InstitutionEditForm institution={institution} setFormVisibility={setFormVisibility} /> : <></>}
+            {formVisibility ? <InstitutionEditForm institution={institution} setCurrentInstitution={setCurrentInstitution} setFormVisibility={setFormVisibility} getInstitutions={getInstitutions} /> : <></>}
         </div>
     );
 }

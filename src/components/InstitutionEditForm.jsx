@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 
-export default function InstitutionEditForm({ institution, setFormVisibility }) {
+export default function InstitutionEditForm({ institution, setCurrentInstitution, setFormVisibility, getInstitutions }) {
     const [formState, setFormState] = useState(institution);
-    console.log(institution);
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
-        editInstitution(formState);
+        await editInstitution(formState);
         setFormVisibility(false);
+        setCurrentInstitution(formState);
+
+        await getInstitutions();
     }
 
     async function editInstitution() {
