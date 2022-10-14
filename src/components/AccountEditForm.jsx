@@ -5,8 +5,10 @@ import InstitutionDropdown from './InstitutionDropdown';
 export default function AccountEditForm({ account, setCurrentAccount, setFormVisibility, getAccounts }) {
     const [formState, setFormState] = useState(account);
     const [institutions, setIntitutions] = useState(null);
-    const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState('Depository');
-    const [institutionDropdownValue, setInstitutionDropdownValue] = useState('null');
+    const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState(account.account_type);
+    const [institutionDropdownValue, setInstitutionDropdownValue] = useState(account.ins_id);
+
+    console.log(account);
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
@@ -48,9 +50,7 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
             const response = await fetch('http://localhost:4000/institutions');
             const data = await response.json();
 
-
             setIntitutions(data);
-            setInstitutionDropdownValue(data[0].ins_id);
         } catch (error) {
             console.error(error.message);
         }
