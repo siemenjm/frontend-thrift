@@ -9,8 +9,6 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
     const [creditedDropdownValue, setCreditedDropdownValue] = useState(transaction.credited_account_id);
     const [debitedDropdownValue, setDebitedDropdownValue] = useState(transaction.debited_account_id);
 
-    console.log(transaction);
-
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
