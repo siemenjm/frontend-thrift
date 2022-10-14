@@ -26,7 +26,7 @@ export default function InstitutionDetails({ institution }) {
 
     return (
         <div className="details institution-details">
-            <InstitutionDetailsHeader institution={institution}/>
+            <InstitutionDetailsHeader institution={institution} accounts={accounts}/>
             <AccountList accounts={accounts}/>
             {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
         </div>

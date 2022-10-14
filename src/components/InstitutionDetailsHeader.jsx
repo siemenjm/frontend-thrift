@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function InstitutionDetailsHeader({ institution }) {
+export default function InstitutionDetailsHeader({ institution, accounts }) {
     function sumBalances(resource) {
         let sum = 0;
         for (let i = 0; i < resource.length; i++) {
@@ -24,7 +24,8 @@ export default function InstitutionDetailsHeader({ institution }) {
                 </thead>
                 <tbody>
                     <tr>
-                        <td></td>
+                        <td>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
+                        <td>${sumBalances(accounts)}</td>
                     </tr>
                 </tbody>
             </table>
