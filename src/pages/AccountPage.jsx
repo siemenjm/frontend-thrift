@@ -10,8 +10,6 @@ export default function AccountPage() {
     const [currentAccount, setCurrentAccount] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
-    console.log(currentAccount);
-
     async function getAccounts() {
         try {
             const response = await fetch('http://localhost:4000/accounts');
@@ -32,7 +30,7 @@ export default function AccountPage() {
             <PageHeader page={'Account'} accounts={accounts}/>
             <AccountList accounts={accounts} setCurrentAccount={setCurrentAccount} />
             {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
-            <AccountDetails />
+            {currentAccount ? <AccountDetails account={currentAccount} /> : <></>}
         </>
     );
 }
