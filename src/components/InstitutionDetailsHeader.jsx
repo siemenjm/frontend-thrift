@@ -1,9 +1,28 @@
 import React from 'react';
-import { FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 export default function InstitutionDetailsHeader({ institution, accounts }) {
-    function handleSubmit() {
+    function handleEditSubmit(e) {
+        editInstitution();
+    }
+
+    function handleDeleteSubmit(e) {
+        e.preventDefault();
+
         deleteInstitution();
+    }
+
+    async function editInstitution() {
+        try {
+            const options = {
+                method: 'PUT'
+            };
+
+            const response = await fetch(`http://localhost:4000/institutions/${institution.ins_id}`, options);
+
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
     async function deleteInstitution() {
@@ -33,7 +52,12 @@ export default function InstitutionDetailsHeader({ institution, accounts }) {
     return (
         <div className='header details-header institution-details-header'>
             <h2 className="details-title">{`${institution.name} Details`}</h2>
-            <form onSubmit={handleSubmit} className='delete-form institution-delete-form'>
+            <form onSubmit={handleEditSubmit} className='delete-form institution-delete-form'>
+                <button type="submit">
+                    <FaEdit />
+                </button>
+            </form>
+            <form onSubmit={handleDeleteSubmit} className='delete-form institution-delete-form'>
                 <button type="submit">
                     <FaTrash />
                 </button>
