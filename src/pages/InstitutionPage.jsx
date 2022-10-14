@@ -10,8 +10,6 @@ export default function InstitutionPage() {
     const [currentInstitution, setCurrentInstitution] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
-    console.log(currentInstitution);
-
     async function getInstitutions() {
         try {
             const response = await fetch('http://localhost:4000/institutions');
