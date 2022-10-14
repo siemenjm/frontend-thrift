@@ -1,9 +1,9 @@
 import TransactionCard from './TransactionCard';
 
-export default function TransactionList({ transactions }) {
+export default function TransactionList({ transactions, setCurrentTransaction }) {
     function loaded() {
         const allTransactions = transactions.map((transaction) => {
-            return <TransactionCard transaction={transaction} key={transaction.trans_id} />
+            return <TransactionCard transaction={transaction} setCurrentTransaction={setCurrentTransaction} key={transaction.trans_id} />
         });
 
         return allTransactions;

@@ -1,7 +1,11 @@
 import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 
-export default function TransactionCard({ transaction }) {
+export default function TransactionCard({ transaction, setCurrentTransaction }) {
+    function handleClick(e) {
+        setCurrentTransaction(transaction);
+    }
+    
     function handleSubmit() {
         deleteTransaction();
     }
@@ -20,7 +24,7 @@ export default function TransactionCard({ transaction }) {
     }
 
     return (
-        <div className="card transaction-card">
+        <div onClick={handleClick} className="card transaction-card">
             <h2>{transaction.description}</h2>
             <h2>{transaction.category} - {transaction.date}</h2>
             <h2>${transaction.amount}</h2>
