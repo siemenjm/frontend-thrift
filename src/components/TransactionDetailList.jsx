@@ -5,7 +5,6 @@ export default function TransactionDetailList({ transaction }) {
     const transactionKeys = Object.keys(transaction);
     transactionKeys.shift();
     transactionKeys.pop();
-    console.log(transactionKeys) // pass these keys to TransactionDetail
 
     const allDetails = transactionKeys.map((transKey) => {
         return <TransactionDetail transKey={transKey} transaction={transaction} key={`${transaction.trans_id}-${transKey}`} />
