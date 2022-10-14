@@ -2,9 +2,17 @@ import React from 'react';
 import { FaTrash } from 'react-icons/fa';
 import TransactionDetailList from './TransactionDetailList';
 
-export default function TransactionDetails({ transaction }) {
-    function handleSubmit() {
+export default function TransactionDetails({ transaction, setCurrentTransaction, transactions, setTransactions }) {
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        let prevTransactions = transactions;
+        const index = prevTransactions.indexOf(transaction);
+        prevTransactions.splice(index, 1);
+
         deleteTransaction();
+        setCurrentTransaction(null);
+        setTransactions(prevTransactions);
     }
 
     async function deleteTransaction() {

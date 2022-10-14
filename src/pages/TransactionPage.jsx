@@ -30,7 +30,7 @@ export default function TransactionPage() {
             <PageHeader page={'Transaction'} transactions={transactions}/>
             <TransactionList transactions={transactions} setCurrentTransaction={setCurrentTransaction} />
             {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}
-            {currentTransaction ? <TransactionDetails transaction={currentTransaction} /> : <></>}
+            {currentTransaction ? <TransactionDetails transaction={currentTransaction} setCurrentTransaction={setCurrentTransaction} transactions={transactions} setTransactions={setTransactions} /> : <></>}
         </>
     );
 }
