@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import InstitutionEditForm from './InstitutionEditForm';
 
-export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, institutions, setInstitutions, getInstitutions, accounts }) {
+export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, getInstitutions, accounts }) {
     const [formVisibility, setFormVisibility] = useState(false);
 
     function handleClick(e) {
@@ -13,16 +13,12 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
         }
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        
-        let prevInstitutions = institutions;
-        const index = prevInstitutions.indexOf(institution);
-        prevInstitutions.splice(index, 1)
 
-        deleteInstitution();
+        await deleteInstitution();
         setCurrentInstitution(null);
-        setInstitutions(prevInstitutions);
+        await getInstitutions();
     }
 
     async function deleteInstitution() {
