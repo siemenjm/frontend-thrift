@@ -7,6 +7,7 @@ import PageHeader from '../components/PageHeader';
 
 export default function TransactionPage() {
     const [transactions, setTransactions] = useState(null);
+    const [currentTransaction, setCurrentTransaction] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
     async function getTransactions() {
@@ -27,9 +28,9 @@ export default function TransactionPage() {
     return (
         <>
             <PageHeader page={'Transaction'} transactions={transactions}/>
-            <TransactionList transactions={transactions}/>
+            <TransactionList transactions={transactions} setCurrentTransaction={setCurrentTransaction} />
             {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}
-            <TransactionDetails />
+            {currentTransaction ? <TransactionDetails transaction={currentTransaction} /> : <></>}
         </>
     );
 }

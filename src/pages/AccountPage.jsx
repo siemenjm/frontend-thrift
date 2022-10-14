@@ -7,6 +7,7 @@ import PageHeader from '../components/PageHeader';
 
 export default function AccountPage() {
     const [accounts, setAccounts] = useState(null);
+    const [currentAccount, setCurrentAccount] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
     async function getAccounts() {
@@ -27,9 +28,9 @@ export default function AccountPage() {
     return (
         <>
             <PageHeader page={'Account'} accounts={accounts}/>
-            <AccountList accounts={accounts}/>
+            <AccountList accounts={accounts} setCurrentAccount={setCurrentAccount} isDetail={false} />
             {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
-            <AccountDetails />
+            {currentAccount ? <AccountDetails account={currentAccount} /> : <></>}
         </>
     );
 }
