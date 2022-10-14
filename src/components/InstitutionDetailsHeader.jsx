@@ -1,15 +1,21 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-export default function InstitutionDetailsHeader({ institution, accounts }) {
+export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, institutions, setInstitutions, accounts }) {
     function handleEditSubmit(e) {
         editInstitution();
     }
 
     function handleDeleteSubmit(e) {
         e.preventDefault();
+        
+        let prevInstitutions = institutions;
+        const index = prevInstitutions.indexOf(institution);
+        prevInstitutions.splice(index, 1)
 
         deleteInstitution();
+        setCurrentInstitution(null);
+        setInstitutions(prevInstitutions);
     }
 
     async function editInstitution() {

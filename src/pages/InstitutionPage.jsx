@@ -10,6 +10,8 @@ export default function InstitutionPage() {
     const [currentInstitution, setCurrentInstitution] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
+    console.log(institutions)
+
     async function getInstitutions() {
         try {
             const response = await fetch('http://localhost:4000/institutions');
@@ -30,7 +32,7 @@ export default function InstitutionPage() {
             <PageHeader page={'Institution'} institutions={institutions}/>
             <InstitutionList institutions={institutions} setCurrentInstitution={setCurrentInstitution} />
             {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Institution'} setFormVisibility={setFormVisibility} />}
-            {currentInstitution ? <InstitutionDetails institution={currentInstitution} /> : <></>}
+            {currentInstitution ? <InstitutionDetails institution={currentInstitution} setCurrentInstitution={setCurrentInstitution} institutions={institutions} setInstitutions={setInstitutions} /> : <></>}
         </>
     );
 }
