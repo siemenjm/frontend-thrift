@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/PageHeader.css';
 
 export default function PageHeader({ page, institutions, accounts, transactions }) {
     function sumBalances(resource) {
@@ -19,14 +20,14 @@ export default function PageHeader({ page, institutions, accounts, transactions 
                 <table>
                     <thead>
                         <tr>
-                            <th>{`Total ${page}s`}</th>
-                            <th>{`Total Balance`}</th>
+                            <th className='left-column'>{`Total ${page}s`}</th>
+                            <th className='right-column'>{`Total Balance`}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{institutions ? institutions.length : <h2>Loading...</h2>}</td>
-                            <td>${sumBalances(institutions)}</td>
+                            <td className='left-column'>{institutions ? institutions.length : <h2>Loading...</h2>}</td>
+                            <td className='right-column'>${sumBalances(institutions)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -41,14 +42,14 @@ export default function PageHeader({ page, institutions, accounts, transactions 
                 <table>
                     <thead>
                         <tr>
-                            <th>{`Total ${page}s`}</th>
-                            <th>{`Total Balance`}</th>
+                            <th className='left-column'>{`Total ${page}s`}</th>
+                            <th className='right-column'>{`Total Balance`}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
-                            <td>${sumBalances(accounts)}</td>
+                            <td className='left-column'>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
+                            <td className='right-column'>${sumBalances(accounts)}</td>
                         </tr>
                     </tbody>
                 </table>
