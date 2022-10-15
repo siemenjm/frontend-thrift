@@ -20,7 +20,7 @@
     cursor: pointer;
 }
 
-.card > img {
+.card img {
     width: 75px;
     margin-right: 1rem;
 }
