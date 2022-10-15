@@ -13,6 +13,13 @@ export default function TransactionPage() {
     const [currentTransaction, setCurrentTransaction] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
+    let style;
+    if (currentTransaction) {
+        style = 'half';
+    } else {
+        style = '';
+    }
+    
     async function getTransactions() {
         try {
             const response = await fetch(`${BASE_URL}/transactions`);
@@ -30,12 +37,12 @@ export default function TransactionPage() {
 
     return (
         <>
-            <div className="center-content">
+            <div className={`center-content ${style}`}>
                 <PageHeader page={'Transaction'} setFormVisibility={setFormVisibility} transactions={transactions}/>
                 <TransactionList transactions={transactions} setCurrentTransaction={setCurrentTransaction} />
                 {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}     
             </div>
-            <div className="right-content">
+            <div className={`right-content ${style}`}>
                 {currentTransaction ? <TransactionDetails transaction={currentTransaction} setCurrentTransaction={setCurrentTransaction} getTransactions={getTransactions} /> : <></>}
             </div>
         </>

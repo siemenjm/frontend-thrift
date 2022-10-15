@@ -13,6 +13,13 @@ export default function InstitutionPage() {
     const [currentInstitution, setCurrentInstitution] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
+    let style;
+    if (currentInstitution) {
+        style = 'half';
+    } else {
+        style = '';
+    }
+
     async function getInstitutions() {
         try {
             const response = await fetch(`${BASE_URL}/institutions`);
@@ -30,12 +37,12 @@ export default function InstitutionPage() {
 
     return (
         <>
-            <div className="center-content">
+            <div className={`center-content ${style}`}>
                 <PageHeader page={'Institution'} setFormVisibility={setFormVisibility} institutions={institutions}/>
                 <InstitutionList institutions={institutions} setCurrentInstitution={setCurrentInstitution} />
                 {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}
             </div>
-            <div className="right-content">
+            <div className={`right-content ${style}`}>
                 {currentInstitution ? <InstitutionDetails institution={currentInstitution} setCurrentInstitution={setCurrentInstitution} getInstitutions={getInstitutions} /> : <></>}
             </div>
         </>
