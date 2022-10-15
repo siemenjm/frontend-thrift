@@ -67,14 +67,3 @@ body {
     cursor: pointer;
     color: var(--accent);
 }
-
-form {
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-self: center;
-}
-
-form > label, form > button {
-    margin-top: 10px;
-}

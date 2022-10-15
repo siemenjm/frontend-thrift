@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Main.css';
+import '../styles/Form.css';
 import { Route, Routes } from 'react-router-dom';
 import AccountPage from '../pages/AccountPage';
 import InstitutionPage from '../pages/InstitutionPage';
