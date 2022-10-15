@@ -54,7 +54,7 @@ body {
     background-color: var(--primary-med-light);
     display: flex;
     width: 1440px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .create-btn {

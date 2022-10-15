@@ -29,6 +29,6 @@
     margin-left: auto;
 }
 
-.account-details-container > p {
+.account-details-container > p, .transaction-details-container > p {
     margin-top: -0.5rem;
 }
