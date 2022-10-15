@@ -50,6 +50,7 @@ body {
 }
 
 .create-btn:hover {
+    cursor: pointer;
     color: var(--accent);
 }
 

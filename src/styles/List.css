@@ -6,6 +6,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    gap: 0.25rem;
     box-shadow: inset 0 0 0.25rem var(--primary-med-dark);
     border: 2px solid var(--primary-med-dark);
     border-radius: 0.25rem;

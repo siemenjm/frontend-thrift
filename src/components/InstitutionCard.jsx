@@ -9,8 +9,8 @@ export default function InstitutionCard({ institution, setCurrentInstitution }) 
     return (
         <div onClick={handleClick} className="card institution-card">
             <img src={institution.logo} alt={`${institution.name} logo`} />
-            <h2>{institution.name}</h2>
-            <h2>${institution.current_balance || "0.00"}</h2>
+            <h4 className='institution-name'>{institution.name}</h4>
+            <h4 className='institution-balance'>${institution.current_balance || "0.00"}</h4>
         </div>
     );
 }
