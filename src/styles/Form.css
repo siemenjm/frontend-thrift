@@ -42,10 +42,6 @@
     border-radius: 0.25rem;
 }
 
-.form-inputs > label {
-    
-}
-
 .form-inputs input, .form-inputs select {
     width: 100%;
     font-size: 1rem;

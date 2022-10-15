@@ -53,39 +53,41 @@ export default function InstitutionCreateForm({ getInstitutions, setFormVisibili
         <>
             <form onSubmit={handleSubmit} className='create-form institution-create-form'>
                 <h3>Add an Institution</h3>
-                <label htmlFor="name">
-                    <p>Bank or Institution Name:</p>
-                    <input
-                        type='text'
-                        name='name'
-                        onChange={handleChange}
-                        value={formState.name}
-                        placeholder='Enter institution name...'
-                        required
-                    />
-                </label>
-                <label htmlFor="logo">
-                    <p>Bank or Institution logo:</p>
-                    <input
-                        type="url"
-                        name='logo'
-                        onChange={handleChange}
-                        value={formState.logo}
-                        placeholder='Enter logo URL...'
-                    />
-                </label>
-                {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
-                <label htmlFor="userId">
-                    <p>User ID:</p>
-                    <input
-                        type="number"
-                        name='userId'
-                        onChange={handleChange}
-                        value={formState.userId}
-                        placeholder='Enter user ID...'
-                        required
-                    />
-                </label>
+                <div className="form-inputs">
+                    <label htmlFor="name">
+                        <p>Bank or Institution Name:</p>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={handleChange}
+                            value={formState.name}
+                            placeholder='Enter institution name...'
+                            required
+                        />
+                    </label>
+                    <label htmlFor="logo">
+                        <p>Bank or Institution logo:</p>
+                        <input
+                            type="url"
+                            name='logo'
+                            onChange={handleChange}
+                            value={formState.logo}
+                            placeholder='Enter logo URL...'
+                        />
+                    </label>
+                    {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
+                    <label htmlFor="userId">
+                        <p>User ID:</p>
+                        <input
+                            type="number"
+                            name='userId'
+                            onChange={handleChange}
+                            value={formState.userId}
+                            placeholder='Enter user ID...'
+                            required
+                        />
+                    </label>
+                </div>
                 <button type="submit">Add New Institution</button>
                 <FaWindowClose onClick={handleClick}/>
             </form>
