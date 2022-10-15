@@ -1,0 +1,21 @@
+export default function InstitutionDropdown({ institutions, dropdownValue, setDropdownValue }) {
+
+    function handleChange(e) {
+        setDropdownValue(e.target.value);
+    }
+
+    function loaded() {
+        return(
+            <>
+                <label htmlFor={'insId'}>Institution:</label>
+                <select value={dropdownValue} onChange={handleChange} >
+                    {institutions.map((institution) => {
+                        return <option value={institution.ins_id} key={institution.ins_id}>{institution.name}</option>
+                    })}
+                </select>
+            </>
+        );
+    }
+
+    return institutions ? loaded() : <h2>Loading dropdown...</h2>;
+}

@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+:root {
+    /* for variables */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+    box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#root {
+    display: flex;
+    height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar {
+    border: 1px solid black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+main {
+    height: 100%;
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: max-content max-content auto;
+}
+
+.page-header {
+    grid-area: 1 / 1 / span 1 / span 1;
+}
+
+.list {
+    grid-area: 2 / 1 / span 1 / span 1;
+}
+
+.card {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid blue;
+}
+
+.create-btn-container {
+    grid-area: 3 / 1 / span 1 / span 1;
+    text-align: center;
+}
+
+.details {
+    grid-area: 1 / 2 / span 3 / span 1;
+    border: 1px solid green;
+}
+
+form {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+}
+
+form > label, form > button {
+    margin-top: 10px;
 }

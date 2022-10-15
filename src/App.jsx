@@ -1,8 +1,13 @@
 import './App.css';
+import Main from './components/Main';
+import Sidebar from './components/Sidebar';
 
 function App() {
     return (
-        <h1>Thrift App</h1>
+        <>
+            <Sidebar />
+            <Main />
+        </>
     );
 }
 
