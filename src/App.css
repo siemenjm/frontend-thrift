@@ -26,9 +26,15 @@ p {
     font-size: 1.0rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 * {
-    box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -41,10 +47,6 @@ body {
 #root {
     display: flex;
     height: 100vh;
-}
-
-.sidebar {
-    background-color: var(--primary-dark);
 }
 
 main {
