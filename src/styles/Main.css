@@ -18,6 +18,7 @@ main {
     background-color: var(--primary-dark);
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     gap: 1rem;
 }
 
