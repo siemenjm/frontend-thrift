@@ -25,6 +25,10 @@
     margin-right: 1rem;
 }
 
-.institution-balance {
+.institution-balance, .account-balance {
     margin-left: auto;
+}
+
+.account-details-container > p {
+    margin-top: -0.5rem;
 }
