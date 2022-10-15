@@ -6,6 +6,15 @@ export default function TransactionCard({ transaction, setCurrentTransaction }) 
     
     const [institution, setInsitution] = useState(null);
     const [account, setAccount] = useState(null);
+
+    let style;
+    if (transaction.trans_type === 'Expense') {
+        style = 'expense-card';
+    } else if (transaction.trans_type === 'Income') {
+        style = 'income-card';
+    } else {
+        style = 'transfer-card';
+    }
     
     function handleClick(e) {
         setCurrentTransaction(transaction);
@@ -64,7 +73,7 @@ export default function TransactionCard({ transaction, setCurrentTransaction }) 
     }
 
     return (
-        <div onClick={handleClick} className="card transaction-card">
+        <div onClick={handleClick} className={`card transaction-card ${style}`}>
             <img src={institution.logo} alt={`${institution.name} logo`} />
             <div className="transaction-details-container">
                 <h4>{transaction.description}</h4>

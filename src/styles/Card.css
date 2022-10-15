@@ -32,3 +32,11 @@
 .account-details-container > p, .transaction-details-container > p {
     margin-top: -0.5rem;
 }
+
+.expense-card {
+    background-color: #ffeeee;
+}
+
+.income-card {
+    background-color: #eeffee;
+}
