@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { UrlContext } from '../context/UrlContext';
 import TransactionDetailList from './TransactionDetailList';
 import TransactionEditForm from './TransactionEditForm';
 
 export default function TransactionDetails({ transaction, setCurrentTransaction, getTransactions }) {
+    const { BASE_URL } = useContext(UrlContext);
+
     const [formVisibility, setFormVisibility] = useState(false);
 
     function handleClick(e) {
@@ -28,7 +31,7 @@ export default function TransactionDetails({ transaction, setCurrentTransaction,
                 method: 'DELETE'
             };
 
-            const response = await fetch(`http://localhost:4000/transactions/${transaction.trans_id}`, options);
+            const response = await fetch(`${BASE_URL}/transactions/${transaction.trans_id}`, options);
 
         } catch (error) {
             console.error(error.message);

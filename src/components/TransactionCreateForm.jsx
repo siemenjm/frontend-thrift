@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UrlContext } from '../context/UrlContext';
 import AccountDropdown from './AccountDropdown';
 import TransactionTypeDropdown from './TransactionTypeDropdown';
 
 export default function TransactionCreateForm({ getTransactions, setFormVisibility }) {
+    const { BASE_URL } = useContext(UrlContext);
+
     const initialFormState = {
         date: '',
         description: '',
@@ -45,7 +48,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                 },
                 body: JSON.stringify(data),
             };
-            const newTransaction = await fetch('http://localhost:4000/transactions', options);
+            const newTransaction = await fetch(`${BASE_URL}/transactions`, options);
 
             getTransactions();
 
@@ -58,7 +61,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
 
     async function getAccounts() {
         try {
-            const response = await fetch('http://localhost:4000/accounts');
+            const response = await fetch(`${BASE_URL}/accounts`);
             const data = await response.json();
 
             setAccounts(data);

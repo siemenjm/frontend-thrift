@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CreateBtn from '../components/CreateBtn';
 import TransactionCreateForm from '../components/TransactionCreateForm';
 import TransactionDetails from '../components/TransactionDetails';
 import TransactionList from '../components/TransactionList';
 import PageHeader from '../components/PageHeader';
+import { UrlContext } from '../context/UrlContext';
 
 export default function TransactionPage() {
+    const { BASE_URL } = useContext(UrlContext);
+
     const [transactions, setTransactions] = useState(null);
     const [currentTransaction, setCurrentTransaction] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
     async function getTransactions() {
         try {
-            const response = await fetch('http://localhost:4000/transactions');
+            const response = await fetch(`${BASE_URL}/transactions`);
             const data = await response.json();
 
             setTransactions(data);

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { UrlContext } from '../context/UrlContext';
 import AccountEditForm from './AccountEditForm';
 
 export default function AccountDetailsHeader({ account, setCurrentAccount, getAccounts, transactions }) {
+    const { BASE_URL } = useContext(UrlContext);
+
     const [formVisibility, setFormVisibility] = useState(false);
 
     function handleClick(e) {
@@ -27,7 +30,7 @@ export default function AccountDetailsHeader({ account, setCurrentAccount, getAc
                 method: 'DELETE'
             };
 
-            const response = await fetch(`http://localhost:4000/accounts/${account.account_id}`, options);
+            const response = await fetch(`${BASE_URL}/accounts/${account.account_id}`, options);
 
         } catch (error) {
             console.error(error.message);

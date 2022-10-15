@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UrlContext } from '../context/UrlContext';
 import AccountDropdown from './AccountDropdown';
 import TransactionTypeDropdown from './TransactionTypeDropdown';
 
 export default function TransactionEditForm({ transaction, setCurrentTransaction, setFormVisibility, getTransactions }) {
+    const { BASE_URL } = useContext(UrlContext);
+
     const [formState, setFormState] = useState(transaction);
     const [accounts, setAccounts] = useState(null);
     const [transTypeDropdownValue, setTransTypeDropdownValue] = useState(transaction.trans_type);
@@ -44,7 +47,7 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
                 },
                 body: JSON.stringify(data),
             };
-            const newTransaction = await fetch(`http://localhost:4000/transactions/${transaction.trans_id}`, options);
+            const newTransaction = await fetch(`${BASE_URL}/transactions/${transaction.trans_id}`, options);
 
         } catch (error) {
             console.error(error.message);
@@ -53,7 +56,7 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
 
     async function getAccounts() {
         try {
-            const response = await fetch('http://localhost:4000/accounts');
+            const response = await fetch(`${BASE_URL}/accounts`);
             const data = await response.json();
 
             setAccounts(data);

@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { UrlContext } from '../context/UrlContext';
 
 export default function InstitutionCreateForm({ getInstitutions, setFormVisibility }) {
+    const { BASE_URL } = useContext(UrlContext);
+
     const initialFormState = {
         name: '',
         logo: '',
@@ -30,7 +33,7 @@ export default function InstitutionCreateForm({ getInstitutions, setFormVisibili
                 },
                 body: JSON.stringify(data),
             };
-            const newInstitution = await fetch('http://localhost:4000/institutions', options);
+            const newInstitution = await fetch(`${BASE_URL}/institutions`, options);
 
             getInstitutions();
 

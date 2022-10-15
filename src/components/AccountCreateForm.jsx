@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UrlContext } from '../context/UrlContext';
 import AccountTypeDropdown from './AccountTypeDropdown';
 import InstitutionDropdown from './InstitutionDropdown';
 
 export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
+    const { BASE_URL } = useContext(UrlContext);
+    
     const initialFormState = {
         name: '',
         startingBalance: '',
@@ -41,7 +44,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
                 body: JSON.stringify(data),
             };
 
-            const newAccount = await fetch('http://localhost:4000/accounts', options);
+            const newAccount = await fetch(`${BASE_URL}/accounts`, options);
 
             getAccounts();
 
@@ -54,7 +57,7 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
 
     async function getInstitutions() {
         try {
-            const response = await fetch('http://localhost:4000/institutions');
+            const response = await fetch(`${BASE_URL}/institutions`);
             const data = await response.json();
 
 

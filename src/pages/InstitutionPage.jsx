@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UrlContext } from '../context/UrlContext';
 import CreateBtn from '../components/CreateBtn';
 import InstitutionCreateForm from '../components/InstitutionCreateForm';
 import InstitutionDetails from '../components/InstitutionDetails';
@@ -6,13 +7,15 @@ import InstitutionList from '../components/InstitutionList';
 import PageHeader from '../components/PageHeader';
 
 export default function InstitutionPage() {
+    const { BASE_URL } = useContext(UrlContext);
+
     const [institutions, setInstitutions] = useState(null);
     const [currentInstitution, setCurrentInstitution] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
     async function getInstitutions() {
         try {
-            const response = await fetch('http://localhost:4000/institutions');
+            const response = await fetch(`${BASE_URL}/institutions`);
             const data = await response.json();
 
             setInstitutions(data);

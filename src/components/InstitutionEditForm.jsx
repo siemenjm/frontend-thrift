@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { UrlContext } from '../context/UrlContext';
 
 export default function InstitutionEditForm({ institution, setCurrentInstitution, setFormVisibility, getInstitutions }) {
+    const { BASE_URL } = useContext(UrlContext);
+    
     const [formState, setFormState] = useState(institution);
 
     function handleChange(e) {
@@ -27,7 +30,7 @@ export default function InstitutionEditForm({ institution, setCurrentInstitution
                 body: JSON.stringify(formState),
             };
 
-            const response = await fetch(`http://localhost:4000/institutions/${institution.ins_id}`, options);
+            const response = await fetch(`${BASE_URL}/institutions/${institution.ins_id}`, options);
 
         } catch (error) {
             console.error(error.message);

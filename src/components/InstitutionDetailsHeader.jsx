@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { UrlContext } from '../context/UrlContext';
 import InstitutionEditForm from './InstitutionEditForm';
 
 export default function InstitutionDetailsHeader({ institution, setCurrentInstitution, getInstitutions, accounts }) {
+    const { BASE_URL } = useContext(UrlContext);
+    
     const [formVisibility, setFormVisibility] = useState(false);
 
     function handleClick(e) {
@@ -27,7 +30,7 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
                 method: 'DELETE'
             };
 
-            const response = await fetch(`http://localhost:4000/institutions/${institution.ins_id}`, options);
+            const response = await fetch(`${BASE_URL}/institutions/${institution.ins_id}`, options);
 
         } catch (error) {
             console.error(error.message);

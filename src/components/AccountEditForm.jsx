@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UrlContext } from '../context/UrlContext';
 import AccountTypeDropdown from './AccountTypeDropdown';
 import InstitutionDropdown from './InstitutionDropdown';
 
 export default function AccountEditForm({ account, setCurrentAccount, setFormVisibility, getAccounts }) {
+    const { BASE_URL } = useContext(UrlContext);
+
     const [formState, setFormState] = useState(account);
     const [institutions, setIntitutions] = useState(null);
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState(account.account_type);
@@ -36,7 +39,7 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
                 body: JSON.stringify(data),
             };
 
-            const response = await fetch(`http://localhost:4000/accounts/${account.account_id}`, options);
+            const response = await fetch(`${BASE_URL}/accounts/${account.account_id}`, options);
 
         } catch (error) {
             console.error(error.message);
@@ -45,7 +48,7 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
 
     async function getInstitutions() {
         try {
-            const response = await fetch('http://localhost:4000/institutions');
+            const response = await fetch(`${BASE_URL}/institutions`);
             const data = await response.json();
 
             setIntitutions(data);
