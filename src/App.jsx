@@ -4,6 +4,7 @@ import Main from './components/Main';
 import Sidebar from './components/Sidebar';
 
 const BASE_URL = 'https://backend-thrift.herokuapp.com';
+// const BASE_URL = 'http://localhost:4000';
 
 function App() {
     return (
