@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/Card.css';
+import '../styles/DetailsHeader.css';
 import '../styles/Form.css';
 import '../styles/List.css';
 import '../styles/Main.css';

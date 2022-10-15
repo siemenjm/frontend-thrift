@@ -14,11 +14,22 @@ main {
 }
 
 .right-content {
-    color: var(--primary-dark);
-    background-color: var(--primary-light);
+    color: var(--primary-light);
+    background-color: var(--primary-dark);
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.right-content .create-btn {
+    color: var(--primary-light);
+    width: 4rem;
+    height: 4rem;
+}
+
+.right-content .create-btn:hover {
+    cursor: pointer;
+    color: var(--primary-med-dark);
 }
 
 .half {
