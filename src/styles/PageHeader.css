@@ -1,7 +1,7 @@
 .page-header {
     color: var(--primary-dark);
     background-color: var(--primary-light);
-    width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,6 +28,7 @@
 }
 
 table {
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -36,14 +37,13 @@ th {
 }
 
 td {
-    text-align: center;
     font-weight: bold;
 }
 
 .left-column {
-    padding-right: 1rem;
+    text-align: left;
 }
 
 .right-column {
-    padding-left: 1rem;
+    text-align: right;
 }

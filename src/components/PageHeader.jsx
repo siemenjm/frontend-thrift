@@ -74,12 +74,12 @@ export default function PageHeader({ page, setFormVisibility, institutions, acco
                 <table>
                     <thead>
                         <tr>
-                            <th>{`Total ${page}s`}</th>
+                            <th className='left-column'>{`Total ${page}s`}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
+                            <td className='left-column'>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
                         </tr>
                     </tbody>
                 </table>
