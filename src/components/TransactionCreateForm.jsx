@@ -28,7 +28,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
     }
 
     function handleClick() {
-        setFormState({...formState, ['creditedAccountId']: creditedDropdownValue, ['debitedAccountId']: debitedDropdownValue });
+        setFormState({...formState, ['transType']: transTypeDropdownValue, ['creditedAccountId']: creditedDropdownValue, ['debitedAccountId']: debitedDropdownValue });
     }
 
     function handleSubmit(e) {

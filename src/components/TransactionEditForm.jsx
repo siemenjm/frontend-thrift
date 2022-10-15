@@ -25,7 +25,7 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
     }
 
     function handleClick() {
-        setFormState({...formState, ['credited_account_id']: creditedDropdownValue, ['debited_account_id']: debitedDropdownValue });
+        setFormState({...formState, ['trans_type']: transTypeDropdownValue, ['credited_account_id']: creditedDropdownValue, ['debited_account_id']: debitedDropdownValue });
     }
 
     async function handleSubmit(e) {
