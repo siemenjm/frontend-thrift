@@ -57,6 +57,11 @@ body {
     height: 100vh;
 }
 
+.create-btn {
+    width: 4rem;
+    height: 4rem;
+}
+
 .create-btn:hover {
     cursor: pointer;
     color: var(--accent);
