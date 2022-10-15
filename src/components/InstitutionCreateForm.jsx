@@ -88,7 +88,7 @@ export default function InstitutionCreateForm({ getInstitutions, setFormVisibili
                         />
                     </label>
                 </div>
-                <button type="submit">Add New Institution</button>
+                <button type="submit">Add Institution</button>
                 <FaWindowClose onClick={handleClick}/>
             </form>
         </>
