@@ -49,37 +49,11 @@ body {
     height: 100vh;
 }
 
-main {
-    height: 100%;
-    flex-grow: 1;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: max-content max-content auto;
-}
-
-.page-header {
-    grid-area: 1 / 1 / span 1 / span 1;
-}
-
-.list {
-    grid-area: 2 / 1 / span 1 / span 1;
-}
-
 .card {
     display: flex;
     justify-content: space-around;
     align-items: center;
     border: 1px solid blue;
-}
-
-.create-btn-container {
-    grid-area: 3 / 1 / span 1 / span 1;
-    text-align: center;
-}
-
-.details {
-    grid-area: 1 / 2 / span 3 / span 1;
-    border: 1px solid green;
 }
 
 form {
