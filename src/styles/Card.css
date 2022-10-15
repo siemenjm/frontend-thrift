@@ -2,8 +2,8 @@
     cursor: pointer;
     background-color: #FFFFFF;
     width: 100%;
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: 75px 1fr auto;
     align-items: center;
     padding: 0.5rem;
     box-shadow: inset 0 0 0.25rem var(--primary-med-light);
@@ -21,12 +21,13 @@
 }
 
 .card img {
-    width: 75px;
-    margin-right: 1rem;
+    justify-self: center;
+    max-width: 75px;
+    max-height: 30px;
 }
 
-.institution-balance, .account-balance, .transaction-balance {
-    margin-left: auto;
+.institution-name, .account-details-container, .transaction-details-container {
+    margin-left: 1rem;
 }
 
 .account-details-container > p, .transaction-details-container > p {
