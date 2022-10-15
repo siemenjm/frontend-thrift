@@ -14,7 +14,7 @@ export default function InstitutionDetails({ institution, setCurrentInstitution,
 
     async function getAccounts() {
         try {
-            const response = await fetch(`http://localhost:4000/institutions/${institution.ins_id}`);
+            const response = await fetch(`${BASE_URL}/institutions/${institution.ins_id}`);
             const data = await response.json();
 
             setAccounts(data.accounts);
