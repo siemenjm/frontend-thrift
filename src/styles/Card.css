@@ -16,6 +16,10 @@
     border: 2px solid var(--primary-med-dark);
 }
 
+.card h4 {
+    cursor: pointer;
+}
+
 .card > img {
     width: 75px;
     margin-right: 1rem;

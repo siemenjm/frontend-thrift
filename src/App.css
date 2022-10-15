@@ -6,6 +6,10 @@
     --accent: #E63946;
 }
 
+h1, h2, h3, h4, th, td {
+    cursor: default;
+}
+
 h1 {
     font-size: 2.4rem;
 }
