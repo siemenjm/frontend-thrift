@@ -52,7 +52,7 @@ export default function InstitutionCreateForm({ getInstitutions, setFormVisibili
     return (
         <>
             <form onSubmit={handleSubmit} className='create-form institution-create-form'>
-                <h2>Add an Institution</h2>
+                <h3>Add an Institution</h3>
                 <label htmlFor="name">
                     <p>Bank or Institution Name:</p>
                     <input

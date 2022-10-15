@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UrlContext } from '../context/UrlContext';
+import { FaWindowClose } from 'react-icons/fa';
 import AccountDropdown from './AccountDropdown';
 import TransactionTypeDropdown from './TransactionTypeDropdown';
 
@@ -22,6 +23,10 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
     const [transTypeDropdownValue, setTransTypeDropdownValue] = useState('Expense');
     const [creditedDropdownValue, setCreditedDropdownValue] = useState(null);
     const [debitedDropdownValue, setDebitedDropdownValue] = useState(null);
+
+    function handleCloseClick(e) {
+        setFormVisibility(false);
+    }
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
@@ -77,6 +82,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
     return (
         <>
             <form onSubmit={handleSubmit} className='create-form transaction-create-form'>
+                <h3>Add a Transaction</h3>
                 <label htmlFor="date">Transaction Date:</label>
                 <input
                     type='date'
@@ -136,6 +142,7 @@ export default function TransactionCreateForm({ getTransactions, setFormVisibili
                     required
                 />
                 <button type="submit" onClick={handleClick}>Add New Transaction</button>
+                <FaWindowClose onClick={handleCloseClick}/>
             </form>
         </>
     );
