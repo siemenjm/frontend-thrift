@@ -3,7 +3,6 @@ import { UrlContext } from '../context/UrlContext';
 
 export default function TransactionCard({ transaction, setCurrentTransaction }) {
     const { BASE_URL } = useContext(UrlContext);
-    console.log(transaction);
     
     const [institution, setInsitution] = useState(null);
     const [account, setAccount] = useState(null);
