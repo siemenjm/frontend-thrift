@@ -3,6 +3,7 @@ import { UrlContext } from '../context/UrlContext';
 
 export default function TransactionCard({ transaction, setCurrentTransaction }) {
     const { BASE_URL } = useContext(UrlContext);
+    console.log(transaction);
     
     const [institution, setInsitution] = useState(null);
     const [account, setAccount] = useState(null);
@@ -13,7 +14,15 @@ export default function TransactionCard({ transaction, setCurrentTransaction }) 
 
     function formatDate(date) {
         const tIndex = date.indexOf('T');
-        const formattedDate = date.slice(0, tIndex);
+        const simpleDate = date.slice(0, tIndex);
+        const dateArray = simpleDate.split('-');
+        
+        let reverseArray = [];
+        reverseArray.push(dateArray[1]);
+        reverseArray.push(dateArray[2]);
+        reverseArray.push(dateArray[0]);
+
+        const formattedDate = reverseArray.join('/');
 
         return formattedDate;
     }
@@ -60,9 +69,9 @@ export default function TransactionCard({ transaction, setCurrentTransaction }) 
             <img src={institution.logo} alt={`${institution.name} logo`} />
             <div className="transaction-details-container">
                 <h4>{transaction.description}</h4>
-                <h4>{transaction.category} - {formatDate(transaction.date)}</h4>
+                <p>{transaction.trans_type} - {transaction.category} - {formatDate(transaction.date)}</p>
             </div>
-            <h4>${transaction.amount}</h4>
+            <h4 className='transaction-balance'>${transaction.amount}</h4>
         </div>
     );
 }
