@@ -1,12 +1,38 @@
 :root {
-    /* for variables */
+    --primary-light: #F1FAEE;
+    --primary-med-light: #A8DADC;
+    --primary-med-dark: #457B9D;
+    --primary-dark: #1D3557;
+    --accent: #E63946;
+}
+
+h1 {
+    font-size: 2.4rem;
+}
+
+h2 {
+    font-size: 2.0rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1.0rem;
 }
 
 * {
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
+    background-color: var(--primary-med-light);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -18,7 +44,7 @@ body {
 }
 
 .sidebar {
-    border: 1px solid black;
+    background-color: var(--primary-dark);
 }
 
 main {
