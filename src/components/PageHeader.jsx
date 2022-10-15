@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/PageHeader.css';
 import CreateBtn from './CreateBtn';
 
 export default function PageHeader({ page, setFormVisibility, institutions, accounts, transactions }) {
