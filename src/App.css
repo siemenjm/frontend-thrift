@@ -49,13 +49,6 @@ body {
     height: 100vh;
 }
 
-.card {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border: 1px solid blue;
-}
-
 form {
     max-width: 300px;
     display: flex;

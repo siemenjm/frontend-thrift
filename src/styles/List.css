@@ -1,0 +1,12 @@
+.list {
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: inset 0 0 0.25rem var(--primary-med-dark);
+    border: 2px solid var(--primary-med-dark);
+    border-radius: 0.25rem;
+}

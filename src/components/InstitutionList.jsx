@@ -1,4 +1,5 @@
 import InstitutionCard from './InstitutionCard';
+import '../styles/List.css';
 
 export default function InstitutionList({ institutions, setCurrentInstitution }) {
     function loaded() {
