@@ -6,12 +6,14 @@ export default function TransactionTypeDropdown({ dropdownValue, setDropdownValu
 
     return (
         <>
-            <label htmlFor="transType">Transaction Type:</label>
-            <select value={dropdownValue} onChange={handleChange} >
-                <option value={'Expense'}>Expense</option>
-                <option value={'Income'}>Income</option>
-                <option value={'Transfer'}>Transfer</option>
-            </select>
+            <label htmlFor="transType">
+                <p>Transaction Type:</p>
+                <select value={dropdownValue} onChange={handleChange} >
+                    <option value={'Expense'}>Expense</option>
+                    <option value={'Income'}>Income</option>
+                    <option value={'Transfer'}>Transfer</option>
+                </select>
+            </label>
         </>
     );
 }
