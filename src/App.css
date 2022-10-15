@@ -58,6 +58,7 @@ body {
 }
 
 .create-btn {
+    color: var(--primary-dark);
     width: 4rem;
     height: 4rem;
 }
