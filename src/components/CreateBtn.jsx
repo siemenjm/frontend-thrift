@@ -1,13 +1,12 @@
 import React from 'react';
+import { FaPlusSquare } from 'react-icons/fa';
 
-export default function CreateBtn({ page, setFormVisibility }) {
+export default function CreateBtn({setFormVisibility }) {
     function handleClick() {
         setFormVisibility(true);
     }
     
     return (
-        <div className="create-btn-container">
-                <button onClick={handleClick} className='create-btn'>Add New {page}</button>
-        </div>
+        <FaPlusSquare onClick={handleClick} className='create-btn' />
     );
 }

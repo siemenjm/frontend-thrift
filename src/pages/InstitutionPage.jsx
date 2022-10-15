@@ -31,9 +31,9 @@ export default function InstitutionPage() {
     return (
         <>
             <div className="center-content">
-                <PageHeader page={'Institution'} institutions={institutions}/>
+                <PageHeader page={'Institution'} setFormVisibility={setFormVisibility} institutions={institutions}/>
                 <InstitutionList institutions={institutions} setCurrentInstitution={setCurrentInstitution} />
-                {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Institution'} setFormVisibility={setFormVisibility} />}
+                {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}
             </div>
             <div className="right-content">
                 {currentInstitution ? <InstitutionDetails institution={currentInstitution} setCurrentInstitution={setCurrentInstitution} getInstitutions={getInstitutions} /> : <></>}

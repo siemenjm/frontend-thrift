@@ -49,6 +49,10 @@ body {
     height: 100vh;
 }
 
+.create-btn:hover {
+    color: var(--accent);
+}
+
 form {
     max-width: 300px;
     display: flex;

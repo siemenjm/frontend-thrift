@@ -11,8 +11,20 @@
     border-radius: 0.25rem;
 }
 
+.title-section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
 .page-title {
     margin-bottom: 0.5rem;
+}
+
+.title-section > svg {
+    width: 2rem;
+    height: 2rem;
 }
 
 table {

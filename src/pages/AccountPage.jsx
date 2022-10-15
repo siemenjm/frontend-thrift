@@ -31,9 +31,9 @@ export default function AccountPage() {
     return (
         <>
             <div className="center-content">
-                <PageHeader page={'Account'} accounts={accounts}/>
+                <PageHeader page={'Account'} setFormVisibility={setFormVisibility} accounts={accounts}/>
                 <AccountList accounts={accounts} setCurrentAccount={setCurrentAccount} isDetail={false} />
-                {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
+                {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}
             </div>
             <div className="right-content">
                 {currentAccount ? <AccountDetails account={currentAccount} setCurrentAccount={setCurrentAccount} getAccounts={getAccounts} /> : <></>}

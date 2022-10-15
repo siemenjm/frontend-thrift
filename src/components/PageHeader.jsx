@@ -1,7 +1,8 @@
 import React from 'react';
 import '../styles/PageHeader.css';
+import CreateBtn from './CreateBtn';
 
-export default function PageHeader({ page, institutions, accounts, transactions }) {
+export default function PageHeader({ page, setFormVisibility, institutions, accounts, transactions }) {
     function sumBalances(resource) {
         let sum = 0;
         for (let i = 0; i < resource.length; i++) {
@@ -16,7 +17,10 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     if (institutions) {
         return (
             <div className="header page-header">
-                <h2 className="page-title">{`${page}s`}</h2>
+                <div className="title-section">
+                    <h2 className="page-title">{`${page}s`}</h2>
+                    <CreateBtn setFormVisibility={setFormVisibility} />
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -38,7 +42,10 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     if (accounts) {
         return (
             <div className="page-header">
-                <h2 className="page-title">{`${page}s`}</h2>
+                <div className="title-section">
+                    <h2 className="page-title">{`${page}s`}</h2>
+                    <CreateBtn setFormVisibility={setFormVisibility} />
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -60,7 +67,10 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     if (transactions) {
         return (
             <div className="page-header">
-                <h2 className="page-title">{`${page}s`}</h2>
+                <div className="title-section">
+                    <h2 className="page-title">{`${page}s`}</h2>
+                    <CreateBtn setFormVisibility={setFormVisibility} />
+                </div>
                 <table>
                     <thead>
                         <tr>

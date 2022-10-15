@@ -31,9 +31,9 @@ export default function TransactionPage() {
     return (
         <>
             <div className="center-content">
-                <PageHeader page={'Transaction'} transactions={transactions}/>
+                <PageHeader page={'Transaction'} setFormVisibility={setFormVisibility} transactions={transactions}/>
                 <TransactionList transactions={transactions} setCurrentTransaction={setCurrentTransaction} />
-                {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}     
+                {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}     
             </div>
             <div className="right-content">
                 {currentTransaction ? <TransactionDetails transaction={currentTransaction} setCurrentTransaction={setCurrentTransaction} getTransactions={getTransactions} /> : <></>}
