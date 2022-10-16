@@ -1,21 +1,21 @@
 .charts-container {
+    color: var(--primary-dark);
+    background-color: var(--primary-light);
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 1rem;
     padding: 1rem;
     gap: 1rem;
+    box-shadow: inset 0 0 0.25rem var(--primary-med-dark);
+    border: 2px solid var(--primary-med-dark);
+    border-radius: 0.25rem;
 }
 
 .chart-container {
-    color: var(--primary-dark);
-    background-color: var(--primary-light);
+    background-color: white;
     width: 100%;
     padding: 1rem;
     box-shadow: inset 0 0 0.25rem var(--primary-med-dark);
     border: 2px solid var(--primary-med-dark);
     border-radius: 0.25rem;
 }
-
-/* .chart-container > canvas {
-    width: 100% !important;
-    height: 100% !important;
-} */

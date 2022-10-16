@@ -64,6 +64,7 @@ export function BarChart({ incomingData }) {
                         size: 12,
                         weight: 'bold',
                     },
+                    color: '#1D3557',
                 },
             },
         },
