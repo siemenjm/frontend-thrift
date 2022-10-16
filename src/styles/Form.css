@@ -42,6 +42,10 @@
     border-radius: 0.25rem;
 }
 
+.transaction-create-form > .form-inputs {
+    max-height: 50vh;
+}
+
 .form-inputs input, .form-inputs select {
     width: 100%;
     font-size: 1rem;
