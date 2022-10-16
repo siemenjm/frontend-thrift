@@ -1,6 +1,12 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { UrlContext } from '../context/UrlContext';
 
 export default function TransactionDetailList({ transaction }) {
+    const { BASE_URL } = useContext(UrlContext);
+
+    const [creditedAccount, setCreditedAccount] = useState(null);
+    const [debitedAccount, setDebitedAccount] = useState(null);
+
     function formatDate(date) {
         const tIndex = date.indexOf('T');
         const simpleDate = date.slice(0, tIndex);
@@ -15,6 +21,38 @@ export default function TransactionDetailList({ transaction }) {
         
         return formattedDate;
     }
+
+    async function getCreditedAccount() {
+        try {
+            const response = await fetch(`${BASE_URL}/accounts/${transaction.credited_account_id}`);
+            const data = await response.json();
+
+            setCreditedAccount(data.account);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    async function getDebitedAccount() {
+        try {
+            const response = await fetch(`${BASE_URL}/accounts/${transaction.debited_account_id}`);
+            const data = await response.json();
+
+            setDebitedAccount(data.account);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        if (transaction.credited_account_id) {
+            getCreditedAccount();
+        }
+
+        if (transaction.debited_account_id) {
+            getDebitedAccount();
+        }
+    }, []);
     
     return (
         <div className='transaction-detail-list'>
@@ -44,11 +82,11 @@ export default function TransactionDetailList({ transaction }) {
             </div>
             <div className='transaction-detail'>
                 <p>Credited Account</p>
-                <p>{transaction.credited_account_id}</p>
+                <p>{creditedAccount ? creditedAccount.name : ''}</p>
             </div>
             <div className='transaction-detail'>
                 <p>Debited Account</p>
-                <p>{transaction.debited_account_id}</p>
+                <p>{debitedAccount ? debitedAccount.name : ''}</p>
             </div>
         </div>
     );
