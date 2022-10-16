@@ -87,8 +87,12 @@ export default function HomePage() {
                     <Link to='/institutions'>
                         {institutionData ? <BarChartBalance resource={'Institution'} resourceData={institutionData} /> : <h2>Loading chart...</h2>}
                     </Link>
-                    {accountData ? <BarChartBalance resource={'Account'} resourceData={accountData} /> : <h2>Loading chart...</h2>}
-                    {transactionData ? <BarChartTransactionType resourceData={transactionData}/> : <h2>Loading chart...</h2>}
+                    <Link to='/accounts'>
+                        {accountData ? <BarChartBalance resource={'Account'} resourceData={accountData} /> : <h2>Loading chart...</h2>}
+                    </Link>
+                    <Link to='/transactions'>
+                        {transactionData ? <BarChartTransactionType resourceData={transactionData}/> : <h2>Loading chart...</h2>}
+                    </Link>
                 </div>
             </div>
         </>
