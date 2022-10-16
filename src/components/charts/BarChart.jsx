@@ -47,7 +47,7 @@ export function BarChart({ incomingData }) {
                     size: 1.6 * 16,
                 },
                 color: '#1D3557',
-                text: 'Your Institution Balances',
+                text: 'Institution Balances',
             },
             legend: {
                 display: false,
