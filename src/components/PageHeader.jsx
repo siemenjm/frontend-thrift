@@ -1,4 +1,5 @@
 import React from 'react';
+import { BarChart } from '../components/charts/BarChart';
 import CreateBtn from './CreateBtn';
 
 export default function PageHeader({ page, setFormVisibility, institutions, accounts, transactions }) {
@@ -34,6 +35,7 @@ export default function PageHeader({ page, setFormVisibility, institutions, acco
                         </tr>
                     </tbody>
                 </table>
+                <BarChart resource={'Institution'} resourceData={institutions} />
             </div>
         );
     }

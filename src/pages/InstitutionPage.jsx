@@ -39,6 +39,9 @@ export default function InstitutionPage() {
         <>
             <div className={`center-content ${style}`}>
                 <PageHeader page={'Institution'} setFormVisibility={setFormVisibility} institutions={institutions}/>
+                {/* <div className="charts-container">
+                    <BarChart resource={'Institution'} resourceData={institutions} />
+                </div> */}
                 <InstitutionList institutions={institutions} setCurrentInstitution={setCurrentInstitution} />
                 {formVisibility ? <InstitutionCreateForm getInstitutions={getInstitutions} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}
             </div>
