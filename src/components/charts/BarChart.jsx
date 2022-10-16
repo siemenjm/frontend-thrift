@@ -42,6 +42,11 @@ export function BarChart({ incomingData }) {
         plugins: {
             title: {
                 display: true,
+                font: {
+                    family: "'Poppins', sans-serif",
+                    size: 1.6 * 16,
+                },
+                color: '#1D3557',
                 text: 'Your Institution Balances',
             },
             legend: {
@@ -52,6 +57,13 @@ export function BarChart({ incomingData }) {
             x: {
                 grid: {
                     display: false,
+                },
+                ticks: {
+                    font: {
+                        family: "'Poppins', sans-serif",
+                        size: 12,
+                        weight: 'bold',
+                    },
                 },
             },
         },
