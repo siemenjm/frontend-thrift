@@ -13,7 +13,7 @@
     border-radius: 0.25rem;
 }
 
-.create-form > svg {
+.create-form > svg, .edit-form > svg {
     color: var(--accent);
     position: absolute;
     top: 1rem;
@@ -22,7 +22,7 @@
     height: 2rem;
 }
 
-.create-form > svg:hover {
+.create-form > svg:hover, .edit-form > svg:hover {
     cursor: pointer;
     color: var(--primary-dark);
 }

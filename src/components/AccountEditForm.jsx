@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UrlContext } from '../context/UrlContext';
+import { FaWindowClose } from 'react-icons/fa';
 import AccountTypeDropdown from './AccountTypeDropdown';
 import InstitutionDropdown from './InstitutionDropdown';
 
@@ -11,6 +12,10 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState(account.account_type);
     const [institutionDropdownValue, setInstitutionDropdownValue] = useState(account.ins_id);
 
+    function handleCloseClick(e) {
+        setFormVisibility(false);
+    }
+    
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
@@ -92,6 +97,7 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
                     <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
                 </div>
                 <button type="submit" onClick={handleClick}>Edit Account</button>
+                <FaWindowClose onClick={handleCloseClick}/>
             </form>
         </>
     );

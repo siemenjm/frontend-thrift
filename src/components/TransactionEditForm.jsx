@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UrlContext } from '../context/UrlContext';
+import { FaWindowClose } from 'react-icons/fa';
 import AccountDropdown from './AccountDropdown';
 import TransactionTypeDropdown from './TransactionTypeDropdown';
 
@@ -19,6 +20,9 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
         setFormState({...formState, ['date']: formattedDate});
     }
 
+    function handleCloseClick(e) {
+        setFormVisibility(false);
+    }
 
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
@@ -134,6 +138,7 @@ export default function TransactionEditForm({ transaction, setCurrentTransaction
                     <AccountDropdown accounts={accounts} accountAction={'Debited'} dropdownValue={debitedDropdownValue} setDropdownValue={setDebitedDropdownValue} />
                 </div>
                 <button type="submit" onClick={handleClick}>Edit Transaction</button>
+                <FaWindowClose onClick={handleCloseClick}/>
             </form>
         </>
     );
