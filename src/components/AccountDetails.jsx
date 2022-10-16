@@ -30,7 +30,7 @@ export default function AccountDetails({ account, setCurrentAccount, getAccounts
     return (
         <div className="details account-details">
             <AccountDetailsHeader account={account} setCurrentAccount={setCurrentAccount} getAccounts={getAccounts} transactions={transactions} />
-            <TransactionList transactions={transactions}/>
+            <TransactionList transactions={transactions} isDetail={true}/>
             {formVisibility ? <TransactionCreateForm getTransactions={getTransactions} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Transaction'} setFormVisibility={setFormVisibility} />}
         </div>
     );

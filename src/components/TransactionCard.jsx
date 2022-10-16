@@ -1,19 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UrlContext } from '../context/UrlContext';
 
-export default function TransactionCard({ transaction, setCurrentTransaction }) {
+export default function TransactionCard({ transaction, isDetail, setCurrentTransaction }) {
     const { BASE_URL } = useContext(UrlContext);
     
     const [institution, setInsitution] = useState(null);
     const [account, setAccount] = useState(null);
 
-    let style;
-    if (transaction.trans_type === 'Expense') {
-        style = 'expense-card';
-    } else if (transaction.trans_type === 'Income') {
-        style = 'income-card';
+    let detailStyle;
+    if (isDetail) {
+        detailStyle = 'detail-card';
     } else {
-        style = 'transfer-card';
+        detailStyle = '';
+    }
+
+    let backgroundStyle;
+    if (transaction.trans_type === 'Expense') {
+        backgroundStyle = 'expense-card';
+    } else if (transaction.trans_type === 'Income') {
+        backgroundStyle = 'income-card';
+    } else {
+        backgroundStyle = 'transfer-card';
     }
     
     function handleClick(e) {
@@ -73,7 +80,7 @@ export default function TransactionCard({ transaction, setCurrentTransaction }) 
     }
 
     return (
-        <div onClick={handleClick} className={`card transaction-card ${style}`}>
+        <div onClick={handleClick} className={`card transaction-card ${backgroundStyle} ${detailStyle}`}>
             <img src={institution.logo} alt={`${institution.name} logo`} />
             <div className="transaction-details-container">
                 <h4>{transaction.description}</h4>
