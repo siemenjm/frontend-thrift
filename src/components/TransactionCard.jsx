@@ -23,10 +23,6 @@ export default function TransactionCard({ transaction, isDetail, setCurrentTrans
         backgroundStyle = 'transfer-card';
     }
     
-    function handleClick(e) {
-        setCurrentTransaction(transaction);
-    }
-
     function formatDate(date) {
         const tIndex = date.indexOf('T');
         const simpleDate = date.slice(0, tIndex);
@@ -36,10 +32,14 @@ export default function TransactionCard({ transaction, isDetail, setCurrentTrans
         reverseArray.push(dateArray[1]);
         reverseArray.push(dateArray[2]);
         reverseArray.push(dateArray[0]);
-
+        
         const formattedDate = reverseArray.join('/');
-
+        
         return formattedDate;
+    }
+    
+    function handleClick(e) {
+        setCurrentTransaction(transaction);
     }
 
     async function getAccount() {

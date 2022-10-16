@@ -1,6 +1,21 @@
 import React from 'react'
 
 export default function TransactionDetailList({ transaction }) {
+    function formatDate(date) {
+        const tIndex = date.indexOf('T');
+        const simpleDate = date.slice(0, tIndex);
+        const dateArray = simpleDate.split('-');
+        
+        let reverseArray = [];
+        reverseArray.push(dateArray[1]);
+        reverseArray.push(dateArray[2]);
+        reverseArray.push(dateArray[0]);
+        
+        const formattedDate = reverseArray.join('/');
+        
+        return formattedDate;
+    }
+    
     return (
         <div className='transaction-detail-list'>
             <div className='transaction-detail'>
@@ -9,11 +24,11 @@ export default function TransactionDetailList({ transaction }) {
             </div>
             <div className='transaction-detail'>
                 <p>Date</p>
-                <p>{transaction.date}</p>
+                <p>{formatDate(transaction.date)}</p>
             </div>
             <div className='transaction-detail'>
                 <p>Amount</p>
-                <p>{transaction.amount}</p>
+                <p>${transaction.amount}</p>
             </div>
             <div className='transaction-detail'>
                 <p>Type</p>
