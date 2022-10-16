@@ -38,7 +38,7 @@ export function BarChart({ incomingData }) {
     }
 
     const options = {
-        responsive: false,
+        responsive: true,
         plugins: {
             title: {
                 display: true,
@@ -79,5 +79,9 @@ export function BarChart({ incomingData }) {
         ],
     };
 
-    return <Bar options={options} data={data} />;
+    return (
+        <div className="chart-container">
+            <Bar options={options} data={data} />
+        </div>
+    );
 }

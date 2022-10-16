@@ -43,3 +43,9 @@ main {
 .half {
     width: 50%;
 }
+
+.home-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

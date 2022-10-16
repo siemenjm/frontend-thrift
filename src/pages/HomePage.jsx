@@ -24,8 +24,13 @@ export default function HomePage() {
 
     return (
         <>
-            <div>HomePage</div>
-            {instiutionData ? <BarChart incomingData={instiutionData} /> : <h2>Loading chart...</h2>}
+            <div className='home-page'>
+                <div className="charts-container">
+                    {instiutionData ? <BarChart incomingData={instiutionData} /> : <h2>Loading chart...</h2>}
+                    {instiutionData ? <BarChart incomingData={instiutionData} /> : <h2>Loading chart...</h2>}
+                    {instiutionData ? <BarChart incomingData={instiutionData} /> : <h2>Loading chart...</h2>}
+                </div>
+            </div>
         </>
     );
 }
