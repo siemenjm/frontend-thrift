@@ -1,4 +1,4 @@
-.create-form {
+.create-form, .edit-form {
     position: relative;
     color: var(--primary-dark);
     background-color: var(--primary-light);
@@ -27,7 +27,7 @@
     color: var(--primary-dark);
 }
 
-.create-form > .form-inputs {
+.create-form > .form-inputs, .edit-form > .form-inputs {
     width: 100%;
     max-height: 33vh;
     display: flex;
@@ -42,7 +42,7 @@
     border-radius: 0.25rem;
 }
 
-.transaction-create-form > .form-inputs {
+.transaction-create-form > .form-inputs, .transaction-edit-form > .form-inputs {
     max-height: 50vh;
 }
 
@@ -55,7 +55,7 @@
     border-radius: 0.5rem;
 }
 
-.create-form button {
+.create-form button, .edit-form button {
     color: #ffffff;
     background-color: var(--primary-dark);
     font-size: 1rem;
@@ -66,7 +66,7 @@
     border-radius: 0.5rem;
 }
 
-.create-form button:hover {
+.create-form button:hover, .edit-form button:hover {
     cursor: pointer;
     background-color: var(--accent);
 }

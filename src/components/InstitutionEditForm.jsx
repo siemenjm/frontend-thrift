@@ -40,23 +40,30 @@ export default function InstitutionEditForm({ institution, setCurrentInstitution
     return (
         <>
             <form onSubmit={handleSubmit} className='edit-form institution-edit-form'>
-                <label htmlFor="name">Bank or Institution Name:</label>
-                <input
-                    type='text'
-                    name='name'
-                    onChange={handleChange}
-                    value={formState.name}
-                    placeholder='Enter institution name...'
-                    required
-                />
-                <label htmlFor="logo">Bank or Institution logo:</label>
-                <input
-                    type="url"
-                    name='logo'
-                    onChange={handleChange}
-                    value={formState.logo}
-                    placeholder='Enter logo URL...'
-                />
+                <h3>Edit Institution</h3>
+                <div className="form-inputs">
+                    <label htmlFor="name">
+                        <p>Bank or Institution Name:</p>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={handleChange}
+                            value={formState.name}
+                            placeholder='Enter institution name...'
+                            required
+                        />
+                    </label>
+                    <label htmlFor="logo">
+                        <p>Bank or Institution logo:</p>
+                        <input
+                            type="url"
+                            name='logo'
+                            onChange={handleChange}
+                            value={formState.logo}
+                            placeholder='Enter logo URL...'
+                        />
+                    </label>
+                </div>
                 <button type="submit">Edit Institution</button>
             </form>
         </>
