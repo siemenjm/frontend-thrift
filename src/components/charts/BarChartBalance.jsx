@@ -20,7 +20,7 @@ ChartJS.register(
     Legend
 );
 
-export function BarChart({ resource, resourceData }) {
+export function BarChartBalance({ resource, resourceData }) {
     function getLabels() {
         const labels = resourceData.map((thisResource) => {
             return thisResource.name;

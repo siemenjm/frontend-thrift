@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart } from '../components/charts/BarChartBalance';
+import { BarChartBalance } from '../components/charts/BarChartBalance';
 import { UrlContext } from '../context/UrlContext';
 
 export default function HomePage() {
@@ -71,9 +71,9 @@ export default function HomePage() {
                 
                 <div className="charts-container">
                     <Link to='/institutions'>
-                        {institutionData ? <BarChart resource={'Institution'} resourceData={institutionData} /> : <h2>Loading chart...</h2>}
+                        {institutionData ? <BarChartBalance resource={'Institution'} resourceData={institutionData} /> : <h2>Loading chart...</h2>}
                     </Link>
-                    {accountData ? <BarChart resource={'Account'} resourceData={accountData} /> : <h2>Loading chart...</h2>}
+                    {accountData ? <BarChartBalance resource={'Account'} resourceData={accountData} /> : <h2>Loading chart...</h2>}
                     {/* {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>} */}
                 </div>
             </div>
