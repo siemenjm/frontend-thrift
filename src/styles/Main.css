@@ -33,6 +33,12 @@ main {
     color: var(--primary-med-dark);
 }
 
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .half {
     width: 50%;
 }
