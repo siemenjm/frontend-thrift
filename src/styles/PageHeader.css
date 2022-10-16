@@ -11,12 +11,22 @@
     border-radius: 0.25rem;
 }
 
+.home-page-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .title-section {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 }
+
+/* .home-page-title-section {
+    width: 66%;
+} */
 
 .page-title {
     margin-bottom: 0.5rem;
@@ -30,6 +40,11 @@
 table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.home-page-table {
+    width: fit-content;
+    font-size: 2.0rem;
 }
 
 th {
