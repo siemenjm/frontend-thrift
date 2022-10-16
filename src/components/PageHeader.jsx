@@ -61,6 +61,7 @@ export default function PageHeader({ page, setFormVisibility, institutions, acco
                         </tr>
                     </tbody>
                 </table>
+                <BarChart resource={'Account'} resourceData={accounts} />
             </div>
         );
     }
