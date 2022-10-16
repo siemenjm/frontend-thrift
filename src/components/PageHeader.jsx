@@ -1,5 +1,6 @@
 import React from 'react';
 import { BarChartBalance } from './charts/BarChartBalance';
+import { BarChartTransactionType } from './charts/BarChartTransactionType';
 import CreateBtn from './CreateBtn';
 
 export default function PageHeader({ page, setFormVisibility, institutions, accounts, transactions }) {
@@ -85,6 +86,7 @@ export default function PageHeader({ page, setFormVisibility, institutions, acco
                         </tr>
                     </tbody>
                 </table>
+                <BarChartTransactionType resourceData={transactions}/>
             </div>
         );
     }
