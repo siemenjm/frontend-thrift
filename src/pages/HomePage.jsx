@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BarChart } from '../components/charts/BarChart';
+import { BarChart } from '../components/charts/BarChartBalance';
 import { UrlContext } from '../context/UrlContext';
 
 export default function HomePage() {
