@@ -13,6 +13,13 @@ export default function AccountPage() {
     const [currentAccount, setCurrentAccount] = useState(null);
     const [formVisibility, setFormVisibility] = useState(false);
 
+    let style;
+    if (currentAccount) {
+        style = 'half';
+    } else {
+        style = '';
+    }
+    
     async function getAccounts() {
         try {
             const response = await fetch(`${BASE_URL}/accounts`);
@@ -30,10 +37,14 @@ export default function AccountPage() {
 
     return (
         <>
-            <PageHeader page={'Account'} accounts={accounts}/>
-            <AccountList accounts={accounts} setCurrentAccount={setCurrentAccount} isDetail={false} />
-            {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn page={'Account'} setFormVisibility={setFormVisibility} />}
-            {currentAccount ? <AccountDetails account={currentAccount} setCurrentAccount={setCurrentAccount} getAccounts={getAccounts} /> : <></>}
+            <div className={`center-content ${style}`}>
+                <PageHeader page={'Account'} setFormVisibility={setFormVisibility} accounts={accounts}/>
+                <AccountList accounts={accounts} setCurrentAccount={setCurrentAccount} isDetail={false} />
+                {formVisibility ? <AccountCreateForm getAccounts={getAccounts} setFormVisibility={setFormVisibility} /> : <CreateBtn setFormVisibility={setFormVisibility} />}
+            </div>
+            <div className={`right-content ${style}`}>
+                {currentAccount ? <AccountDetails account={currentAccount} setCurrentAccount={setCurrentAccount} getAccounts={getAccounts} /> : <></>}
+            </div>
         </>
     );
 }

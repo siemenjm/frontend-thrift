@@ -6,14 +6,16 @@ export default function AccountTypeDropdown({ dropdownValue, setDropdownValue })
 
     return (
         <>
-            <label htmlFor="accountType">Account Type:</label>
-            <select value={dropdownValue} onChange={handleChange} >
-                <option value={'Depository'}>Depository</option>
-                <option value={'Credit'}>Credit</option>
-                <option value={'Loan'}>Loan</option>
-                <option value={'Investment'}>Investment</option>
-                <option value={'Other'}>Other</option>
-            </select>
+            <label htmlFor="accountType">
+                <p>Account Type:</p>
+                <select value={dropdownValue} onChange={handleChange} >
+                    <option value={'Depository'}>Depository</option>
+                    <option value={'Credit'}>Credit</option>
+                    <option value={'Loan'}>Loan</option>
+                    <option value={'Investment'}>Investment</option>
+                    <option value={'Other'}>Other</option>
+                </select>
+            </label>
         </>
     );
 }

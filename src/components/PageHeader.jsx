@@ -1,6 +1,7 @@
 import React from 'react';
+import CreateBtn from './CreateBtn';
 
-export default function PageHeader({ page, institutions, accounts, transactions }) {
+export default function PageHeader({ page, setFormVisibility, institutions, accounts, transactions }) {
     function sumBalances(resource) {
         let sum = 0;
         for (let i = 0; i < resource.length; i++) {
@@ -15,18 +16,21 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     if (institutions) {
         return (
             <div className="header page-header">
-                <h2 className="page-title">{`${page}s`}</h2>
+                <div className="title-section">
+                    <h2 className="page-title">{`${page}s`}</h2>
+                    <CreateBtn setFormVisibility={setFormVisibility} />
+                </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>{`Total ${page}s`}</th>
-                            <th>{`Total Balance`}</th>
+                            <th className='left-column'>{`Total ${page}s`}</th>
+                            <th className='right-column'>{`Total Balance`}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{institutions ? institutions.length : <h2>Loading...</h2>}</td>
-                            <td>${sumBalances(institutions)}</td>
+                            <td className='left-column'>{institutions ? institutions.length : <h2>Loading...</h2>}</td>
+                            <td className='right-column'>${sumBalances(institutions)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -37,18 +41,21 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     if (accounts) {
         return (
             <div className="page-header">
-                <h2 className="page-title">{`${page}s`}</h2>
+                <div className="title-section">
+                    <h2 className="page-title">{`${page}s`}</h2>
+                    <CreateBtn setFormVisibility={setFormVisibility} />
+                </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>{`Total ${page}s`}</th>
-                            <th>{`Total Balance`}</th>
+                            <th className='left-column'>{`Total ${page}s`}</th>
+                            <th className='right-column'>{`Total Balance`}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
-                            <td>${sumBalances(accounts)}</td>
+                            <td className='left-column'>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
+                            <td className='right-column'>${sumBalances(accounts)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -59,16 +66,19 @@ export default function PageHeader({ page, institutions, accounts, transactions 
     if (transactions) {
         return (
             <div className="page-header">
-                <h2 className="page-title">{`${page}s`}</h2>
+                <div className="title-section">
+                    <h2 className="page-title">{`${page}s`}</h2>
+                    <CreateBtn setFormVisibility={setFormVisibility} />
+                </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>{`Total ${page}s`}</th>
+                            <th className='left-column'>{`Total ${page}s`}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
+                            <td className='left-column'>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
                         </tr>
                     </tbody>
                 </table>

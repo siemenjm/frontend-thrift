@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaWindowClose } from 'react-icons/fa';
 import { UrlContext } from '../context/UrlContext';
 import InstitutionEditForm from './InstitutionEditForm';
 
@@ -7,7 +7,11 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
     const { BASE_URL } = useContext(UrlContext);
     
     const [formVisibility, setFormVisibility] = useState(false);
-
+    
+    function handleCloseClick(e) {
+        setCurrentInstitution(null);
+    }
+    
     function handleClick(e) {
         if (formVisibility) {
             setFormVisibility(false);
@@ -50,26 +54,37 @@ export default function InstitutionDetailsHeader({ institution, setCurrentInstit
     
     return (
         <div className='header details-header institution-details-header'>
-            <h2 className="details-title">{`${institution.name} Details`}</h2>
-            <button onClick={handleClick} className='edit-btn institution-edit-btn'>
-                <FaEdit />
-            </button>
-            <form onSubmit={handleSubmit} className='delete-form institution-delete-form'>
-                <button type="submit">
-                    <FaTrash />
-                </button>
-            </form>
+            <div className="title-section">
+                <h2 className="details-title">{`${institution.name} Details`}</h2>
+                <FaWindowClose onClick={handleCloseClick}/>
+            </div>
+            <div className="pen-trash-container">
+                <div className="pen-container">
+                    <p>Edit Insitution</p>
+                    <button onClick={handleClick} className='edit-btn institution-edit-btn'>
+                        <FaEdit />
+                    </button>
+                </div>
+                <div className="trash-container">
+                    <p>Delete Institution</p>
+                    <form onSubmit={handleSubmit} className='delete-form institution-delete-form'>
+                        <button type="submit">
+                            <FaTrash />
+                        </button>
+                    </form>
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Total Accounts</th>
-                        <th>Total Balance</th>
+                        <th className='left-column'>Total Accounts</th>
+                        <th className='right-column'>Total Balance</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
-                        <td>${accounts ? sumBalances(accounts) : <h2>Loading...</h2>}</td>
+                        <td className='left-column'>{accounts ? accounts.length : <h2>Loading...</h2>}</td>
+                        <td className='right-column'>${accounts ? sumBalances(accounts) : <h2>Loading...</h2>}</td>
                     </tr>
                 </tbody>
             </table>
