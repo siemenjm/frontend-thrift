@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BarChartBalance } from '../components/charts/BarChartBalance';
+import { BarChartTransactionType } from '../components/charts/BarChartTransactionType';
 import { UrlContext } from '../context/UrlContext';
 
 export default function HomePage() {
@@ -8,6 +9,7 @@ export default function HomePage() {
 
     const [institutionData, setInstitutionData] = useState(null);
     const [accountData, setAccountData] = useState(null);
+    const [transactionData, setTransactionData] = useState(null);
 
     function sumBalances(resource) {
         let sum = 0;
@@ -42,9 +44,21 @@ export default function HomePage() {
         }
     }
 
+    async function getTransactionData() {
+        try {
+            const response = await fetch(`${BASE_URL}/transactions`);
+            const data = await response.json();
+
+            setTransactionData(data);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
     useEffect(() => {
         getInstitutionData();
         getAccountData();
+        getTransactionData();
     }, []);
 
     return (
@@ -74,7 +88,7 @@ export default function HomePage() {
                         {institutionData ? <BarChartBalance resource={'Institution'} resourceData={institutionData} /> : <h2>Loading chart...</h2>}
                     </Link>
                     {accountData ? <BarChartBalance resource={'Account'} resourceData={accountData} /> : <h2>Loading chart...</h2>}
-                    {/* {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>} */}
+                    {transactionData ? <BarChartTransactionType resourceData={transactionData}/> : <h2>Loading chart...</h2>}
                 </div>
             </div>
         </>
