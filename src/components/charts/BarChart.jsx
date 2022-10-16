@@ -20,7 +20,23 @@ ChartJS.register(
     Legend
 );
 
-export function BarChart({ labels, balanceData }) {
+export function BarChart({ incomingData }) {
+    function getLabels() {
+        const labels = incomingData.map((institution) => {
+            return institution.name;
+        });
+
+        return labels;
+    }
+
+    function getBalanceData() {
+        const balanceData = incomingData.map((institution) => {
+            return institution.current_balance;
+        });
+
+        return balanceData;
+    }
+
     const options = {
         responsive: false,
         plugins: {
@@ -41,6 +57,9 @@ export function BarChart({ labels, balanceData }) {
         },
     };
 
+    const labels = getLabels();
+    const balanceData = getBalanceData();
+
     const data = {
         labels,
         datasets: [
@@ -55,9 +74,7 @@ export function BarChart({ labels, balanceData }) {
                     } else {
                         return 'rgba(230, 57, 70, 1.0)';
                     }
-                    // return balanceData[index];
                 }),
-                // backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
         ],
     };

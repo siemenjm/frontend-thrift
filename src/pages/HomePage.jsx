@@ -6,22 +6,6 @@ export default function HomePage() {
     const { BASE_URL } = useContext(UrlContext);
 
     const [instiutionData, setInstutionData] = useState(null);
-
-    function getLabels() {
-        const labels = instiutionData.map((institution) => {
-            return institution.name;
-        });
-
-        return labels;
-    }
-
-    function getBalanceData() {
-        const balanceData = instiutionData.map((institution) => {
-            return institution.current_balance;
-        });
-
-        return balanceData;
-    }
     
     async function getInstitutionData() {
         try {
@@ -41,7 +25,7 @@ export default function HomePage() {
     return (
         <>
             <div>HomePage</div>
-            {instiutionData ? <BarChart labels={getLabels()} balanceData={getBalanceData()} /> : <h2>Loading chart...</h2>}
+            {instiutionData ? <BarChart incomingData={instiutionData} /> : <h2>Loading chart...</h2>}
         </>
     );
 }
