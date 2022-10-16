@@ -7,13 +7,15 @@ export default function AccountDropdown({ accounts, accountAction, dropdownValue
     function loaded() {
         return(
             <>
-                <label htmlFor={`${accountAction.toLowerCase()}AccountId`}>{accountAction} Account ID:</label>
-                <select value={dropdownValue || ''} onChange={handleChange} >
-                    <option value={''}>None</option>
-                    {accounts.map((account) => {
-                        return <option value={account.account_id} key={account.account_id}>{account.name}</option>
-                    })}
-                </select>
+                <label htmlFor={`${accountAction.toLowerCase()}AccountId`}>
+                    <p>{accountAction} Account ID:</p>
+                    <select value={dropdownValue || ''} onChange={handleChange} >
+                        <option value={''}>None</option>
+                        {accounts.map((account) => {
+                            return <option value={account.account_id} key={account.account_id}>{account.name}</option>
+                        })}
+                    </select>
+                </label>
             </>
         );
     }

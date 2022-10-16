@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaWindowClose } from 'react-icons/fa';
 import { UrlContext } from '../context/UrlContext';
 import AccountEditForm from './AccountEditForm';
 
@@ -8,6 +8,10 @@ export default function AccountDetailsHeader({ account, setCurrentAccount, getAc
 
     const [formVisibility, setFormVisibility] = useState(false);
 
+    function handleCloseClick(e) {
+        setCurrentAccount(null);
+    }
+    
     function handleClick(e) {
         if (formVisibility) {
             setFormVisibility(false);
@@ -39,26 +43,37 @@ export default function AccountDetailsHeader({ account, setCurrentAccount, getAc
 
     return (
         <div className='header details-header account-details-header'>
-            <h2 className="details-title">{`${account.name} Details`}</h2>
-            <button onClick={handleClick} className='edit-btn account-edit-btn'>
-                <FaEdit />
-            </button>
-            <form onSubmit={handleSubmit} className='delete-form account-delete-form'>
-                <button type="submit">
-                    <FaTrash />
-                </button>
-            </form>
+            <div className="title-section">
+                <h2 className="details-title">{`${account.name} Details`}</h2>
+                <FaWindowClose onClick={handleCloseClick}/>
+            </div>
+            <div className="pen-trash-container">
+                <div className="pen-container">
+                    <p>Edit Account</p>
+                    <button onClick={handleClick} className='edit-btn account-edit-btn'>
+                        <FaEdit />
+                    </button>
+                </div>
+                <div className="trash-container">
+                    <p>Delete Account</p>
+                    <form onSubmit={handleSubmit} className='delete-form account-delete-form'>
+                        <button type="submit">
+                            <FaTrash />
+                        </button>
+                    </form>
+                </div>
+            </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Total Transactions</th>
-                        <th>Total Balance</th>
+                        <th className='left-column'>Total Transactions</th>
+                        <th className='right-column'>Total Balance</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
-                        <td>${account.current_balance}</td>
+                        <td className='left-column'>{transactions ? transactions.length : <h2>Loading...</h2>}</td>
+                        <td className='right-column'>${account.current_balance}</td>
                     </tr>
                 </tbody>
             </table>

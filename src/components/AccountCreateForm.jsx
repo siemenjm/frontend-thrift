@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UrlContext } from '../context/UrlContext';
+import { FaWindowClose } from 'react-icons/fa';
 import AccountTypeDropdown from './AccountTypeDropdown';
 import InstitutionDropdown from './InstitutionDropdown';
 
@@ -18,6 +19,10 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState('Depository');
     const [institutionDropdownValue, setInstitutionDropdownValue] = useState('null');
 
+    function handleCloseClick(e) {
+        setFormVisibility(false);
+    }
+    
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
@@ -75,38 +80,48 @@ export default function AccountCreateForm({ getAccounts, setFormVisibility }) {
     return (
         <>
             <form onSubmit={handleSubmit} className='create-form account-create-form'>
-                <label htmlFor="name">Account name:</label>
-                <input
-                    type='text'
-                    name='name'
-                    onChange={handleChange}
-                    value={formState.name}
-                    placeholder='Enter account name...'
-                    required
-                />
-                <label htmlFor="startingBalance">Starting balance ($):</label>
-                <input
-                    type="number"
-                    name='startingBalance'
-                    onChange={handleChange}
-                    value={formState.startingBalance}
-                    placeholder='Enter account starting balance...'
-                    required
-                />
-                <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
-                <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
+                <h3>Add an Account</h3>
+                <div className="form-inputs">
+                    <label htmlFor="name">
+                        <p>Account name:</p>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={handleChange}
+                            value={formState.name}
+                            placeholder='Enter account name...'
+                            required
+                        />
+                    </label>
+                    <label htmlFor="startingBalance">
+                        <p>Starting balance ($):</p>
+                        <input
+                            type="number"
+                            name='startingBalance'
+                            onChange={handleChange}
+                            value={formState.startingBalance}
+                            placeholder='Enter account starting balance...'
+                            required
+                        />
+                    </label>
+                    <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
+                    <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
 
-                {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
-                <label htmlFor="userId">User ID:</label>
-                <input
-                    type="number"
-                    name='userId'
-                    onChange={handleChange}
-                    value={formState.userId}
-                    placeholder='Enter user ID...'
-                    required
-                />
-                <button type="submit" onClick={handleClick}>Add New Account</button>
+                    {/* REMOVE THIS ONCE AUTH IS ADDED (USE CURRENT USER AS HIDDEN INPUT) */}
+                    <label htmlFor="userId">
+                        <p>User ID:</p>
+                        <input
+                            type="number"
+                            name='userId'
+                            onChange={handleChange}
+                            value={formState.userId}
+                            placeholder='Enter user ID...'
+                            required
+                        />
+                    </label>
+                </div>
+                <button type="submit" onClick={handleClick}>Add Account</button>
+                <FaWindowClose onClick={handleCloseClick}/>
             </form>
         </>
     );

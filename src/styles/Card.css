@@ -1,0 +1,54 @@
+.card {
+    cursor: pointer;
+    background-color: #FFFFFF;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 75px 1fr auto;
+    align-items: center;
+    padding: 0.5rem;
+    box-shadow: inset 0 0 0.25rem var(--primary-med-light);
+    border: 2px solid var(--primary-med-light);
+    border-radius: 0.25rem;
+}
+
+.detail-card {
+    box-shadow: inset 0 0 0.25rem var(--primary-dark);
+    border: none;
+}
+
+.card:hover {
+    box-shadow: inset 0 0 0.25rem var(--primary-med-dark);
+    border: 2px solid var(--primary-med-dark);
+}
+
+.detail-card:hover {
+    background-color: var(--primary-light);
+    box-shadow: inset 0 0 0.25rem var(--primary-dark);
+    border: none;
+}
+
+.card h4 {
+    cursor: pointer;
+}
+
+.card img {
+    justify-self: center;
+    max-width: 75px;
+    max-height: 30px;
+}
+
+.institution-name, .account-details-container, .transaction-details-container {
+    margin-left: 1rem;
+}
+
+.account-details-container > p, .transaction-details-container > p {
+    margin-top: -0.5rem;
+}
+
+.expense-card {
+    background-color: #ffeeee;
+}
+
+.income-card {
+    background-color: #eeffee;
+}

@@ -1,0 +1,45 @@
+main {
+    height: 100%;
+    flex-grow: 1;
+    display: flex;
+}
+
+.center-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    gap: 1rem;
+}
+
+.right-content {
+    color: var(--primary-light);
+    background-color: var(--primary-dark);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.right-content .create-btn {
+    color: var(--primary-light);
+    width: 4rem;
+    height: 4rem;
+}
+
+.right-content .create-btn:hover {
+    cursor: pointer;
+    color: var(--primary-med-dark);
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.half {
+    width: 50%;
+}

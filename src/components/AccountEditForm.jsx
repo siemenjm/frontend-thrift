@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UrlContext } from '../context/UrlContext';
+import { FaWindowClose } from 'react-icons/fa';
 import AccountTypeDropdown from './AccountTypeDropdown';
 import InstitutionDropdown from './InstitutionDropdown';
 
@@ -11,6 +12,10 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
     const [accountTypeDropdownValue, setAccountTypeDropdownValue] = useState(account.account_type);
     const [institutionDropdownValue, setInstitutionDropdownValue] = useState(account.ins_id);
 
+    function handleCloseClick(e) {
+        setFormVisibility(false);
+    }
+    
     function handleChange(e) {
         setFormState({...formState, [e.target.name]: e.target.value });
     }
@@ -64,27 +69,35 @@ export default function AccountEditForm({ account, setCurrentAccount, setFormVis
     return (
         <>
             <form onSubmit={handleSubmit} className='create-form account-create-form'>
-                <label htmlFor="name">Account name:</label>
-                <input
-                    type='text'
-                    name='name'
-                    onChange={handleChange}
-                    value={formState.name}
-                    placeholder='Enter account name...'
-                    required
-                />
-                <label htmlFor="starting_balance">Starting balance ($):</label>
-                <input
-                    type="number"
-                    name='starting_balance'
-                    onChange={handleChange}
-                    value={formState.starting_balance}
-                    placeholder='Enter account starting balance...'
-                    required
-                />
-                <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
-                <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
+                <h3>Edit Account</h3>
+                <div className="form-inputs">
+                    <label htmlFor="name">
+                        <p>Account name:</p>
+                        <input
+                            type='text'
+                            name='name'
+                            onChange={handleChange}
+                            value={formState.name}
+                            placeholder='Enter account name...'
+                            required
+                        />
+                    </label>
+                    <label htmlFor="starting_balance">
+                        <p>Starting balance ($):</p>
+                        <input
+                            type="number"
+                            name='starting_balance'
+                            onChange={handleChange}
+                            value={formState.starting_balance}
+                            placeholder='Enter account starting balance...'
+                            required
+                        />
+                    </label>
+                    <AccountTypeDropdown dropdownValue={accountTypeDropdownValue} setDropdownValue={setAccountTypeDropdownValue} />
+                    <InstitutionDropdown institutions={institutions} dropdownValue={institutionDropdownValue} setDropdownValue={setInstitutionDropdownValue} />
+                </div>
                 <button type="submit" onClick={handleClick}>Edit Account</button>
+                <FaWindowClose onClick={handleCloseClick}/>
             </form>
         </>
     );
