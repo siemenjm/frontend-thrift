@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaPlusSquare } from 'react-icons/fa';
+import { FaRegPlusSquare } from 'react-icons/fa';
 
 export default function CreateBtn({setFormVisibility }) {
     function handleClick() {
@@ -7,6 +7,6 @@ export default function CreateBtn({setFormVisibility }) {
     }
     
     return (
-        <FaPlusSquare onClick={handleClick} className='create-btn' />
+        <FaRegPlusSquare onClick={handleClick} className='create-btn' />
     );
 }
