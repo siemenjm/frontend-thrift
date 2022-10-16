@@ -14,7 +14,12 @@
     background-color: white;
     width: 100%;
     padding: 1rem;
+    box-shadow: inset 0 0 0.25rem var(--primary-med-light);
+    border: 2px solid var(--primary-med-light);
+    border-radius: 0.25rem;
+}
+
+.chart-container:hover {
     box-shadow: inset 0 0 0.25rem var(--primary-med-dark);
     border: 2px solid var(--primary-med-dark);
-    border-radius: 0.25rem;
 }

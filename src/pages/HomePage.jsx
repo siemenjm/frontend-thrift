@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BarChart } from '../components/charts/BarChart';
 import { UrlContext } from '../context/UrlContext';
 
@@ -56,7 +57,9 @@ export default function HomePage() {
                 </div>
                 
                 <div className="charts-container">
-                    {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
+                    <Link to='/institutions'>
+                        {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
+                    </Link>
                     {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
                     {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
                 </div>
