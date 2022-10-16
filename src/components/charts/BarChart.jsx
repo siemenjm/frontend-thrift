@@ -20,18 +20,18 @@ ChartJS.register(
     Legend
 );
 
-export function BarChart({ incomingData }) {
+export function BarChart({ resource, resourceData }) {
     function getLabels() {
-        const labels = incomingData.map((institution) => {
-            return institution.name;
+        const labels = resourceData.map((thisResource) => {
+            return thisResource.name;
         });
 
         return labels;
     }
 
     function getBalanceData() {
-        const balanceData = incomingData.map((institution) => {
-            return institution.current_balance;
+        const balanceData = resourceData.map((thisResource) => {
+            return thisResource.current_balance;
         });
 
         return balanceData;
@@ -47,7 +47,7 @@ export function BarChart({ incomingData }) {
                     size: 1.6 * 16,
                 },
                 color: '#1D3557',
-                text: 'Institution Balances',
+                text: `${resource} Balances`,
             },
             legend: {
                 display: false,

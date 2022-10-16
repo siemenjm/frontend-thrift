@@ -6,7 +6,8 @@ import { UrlContext } from '../context/UrlContext';
 export default function HomePage() {
     const { BASE_URL } = useContext(UrlContext);
 
-    const [institutionData, setInstutionData] = useState(null);
+    const [institutionData, setInstitutionData] = useState(null);
+    const [accountData, setAccountData] = useState(null);
 
     function sumBalances(resource) {
         let sum = 0;
@@ -24,7 +25,18 @@ export default function HomePage() {
             const response = await fetch(`${BASE_URL}/institutions`);
             const data = await response.json();
 
-            setInstutionData(data);
+            setInstitutionData(data);
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    async function getAccountData() {
+        try {
+            const response = await fetch(`${BASE_URL}/accounts`);
+            const data = await response.json();
+
+            setAccountData(data);
         } catch (error) {
             console.error(error.message);
         }
@@ -32,6 +44,7 @@ export default function HomePage() {
 
     useEffect(() => {
         getInstitutionData();
+        getAccountData();
     }, []);
 
     return (
@@ -58,10 +71,10 @@ export default function HomePage() {
                 
                 <div className="charts-container">
                     <Link to='/institutions'>
-                        {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
+                        {institutionData ? <BarChart resource={'Institution'} resourceData={institutionData} /> : <h2>Loading chart...</h2>}
                     </Link>
-                    {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
-                    {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>}
+                    {accountData ? <BarChart resource={'Account'} resourceData={accountData} /> : <h2>Loading chart...</h2>}
+                    {/* {institutionData ? <BarChart incomingData={institutionData} /> : <h2>Loading chart...</h2>} */}
                 </div>
             </div>
         </>
