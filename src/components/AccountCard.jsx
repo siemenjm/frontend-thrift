@@ -6,6 +6,13 @@ export default function AccountCard({ account, isDetail, setCurrentAccount}) {
     
     const [institution, setInsitution] = useState(null);
     
+    let style;
+    if (isDetail) {
+        style = 'detail-card';
+    } else {
+        style = '';
+    }
+    
     function handleClick(e) {
         if (!isDetail) {
             setCurrentAccount(account);
@@ -32,7 +39,7 @@ export default function AccountCard({ account, isDetail, setCurrentAccount}) {
     }
 
     return (
-        <div onClick={handleClick} className="card account-card">
+        <div onClick={handleClick} className={`card account-card ${style}`}>
             <img src={institution.logo} alt={`${institution.name} logo`} />
             <div className="account-details-container">
                 <h4>{account.name}</h4>
